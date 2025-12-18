@@ -3,69 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Un Tesoro Está por Llegar</title>
-
+<title>Invitación Baby Shower Mar</title>
 <style>
 /* === Estilos base === */
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
-  background: #f4e2b1; /* Color arena */
+  background: #f4e2b1; /* color arena completo */
   overflow-x: hidden;
-  color: #000;
   text-align: center;
+  height: 100vh;
 }
 
-/* === Fondo marino animado === */
-#sea {
+/* === Contenedor de animaciones === */
+#ocean {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(to bottom, #00aaff 30%, #0077cc 70%, #005599 100%);
-  z-index: -3;
+  height: 100%;
+  background: #f4e2b1;
   overflow: hidden;
+  z-index: -2;
+}
+
+/* === Red de pesca arriba === */
+#net {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 300px;
+  height: 150px;
+  margin-left: -150px;
+  border-top: 5px solid #ff9999;
+  border-left: 5px solid #ff9999;
+  border-right: 5px solid #ff9999;
+  border-radius: 50%;
+  animation: swing 4s infinite alternate ease-in-out;
+  z-index: 1;
+}
+@keyframes swing {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
 }
 
 /* === Burbujas === */
 .bubble {
   position: absolute;
-  bottom: -50px;
-  width: 12px; height: 12px;
+  bottom: -30px;
+  width: 15px;
+  height: 15px;
   background: rgba(255,255,255,0.7);
   border-radius: 50%;
   animation: rise 10s infinite ease-in;
 }
 @keyframes rise {
-  0% { bottom: -50px; opacity: 0.5; transform: scale(0.6); }
+  0% { bottom: -30px; transform: scale(0.5); opacity: 0.5; }
   50% { opacity: 1; }
-  100% { bottom: 110%; opacity: 0; transform: scale(1); }
+  100% { bottom: 100%; transform: scale(1); opacity: 0; }
 }
 
-/* === Red de pesca === */
-#net {
-  position: absolute;
-  top: 5%;
-  left: -20%;
-  width: 250px;
-  height: 250px;
-  background-image: url('red.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  animation: swing 5s infinite ease-in-out;
-  z-index: -1;
-}
-@keyframes swing {
-  0% { transform: rotate(-10deg) translateX(-5%); }
-  50% { transform: rotate(10deg) translateX(5%); }
-  100% { transform: rotate(-10deg) translateX(-5%); }
-}
-
-/* === Personajes animados === */
+/* === Personajes animados SVG === */
 .character {
   position: absolute;
-  width: 70px;
+  width: 60px;
   animation: float 4s infinite alternate ease-in-out;
 }
 @keyframes float {
@@ -74,20 +75,20 @@ body, html {
 
 /* === Texto principal === */
 h1, h2, p {
-  margin: 10px auto;
+  margin: 5px auto;
   max-width: 90%;
-  color: #fff;
-  text-shadow: 2px 2px 5px #000;
+  color: #ff4500;
+  text-shadow: 2px 2px 4px #000;
 }
 
-h1 { font-size: 2.4em; }
-h2 { font-size: 1.8em; }
-p  { font-size: 1.2em; }
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+p  { font-size: 1.3em; }
 
 /* === Botones === */
 .button {
   display: inline-block;
-  margin: 15px;
+  margin: 10px;
   padding: 12px 25px;
   background: #ff69b4;
   color: #fff;
@@ -103,46 +104,51 @@ p  { font-size: 1.2em; }
 
 /* === Contador === */
 #countdown {
-  font-size: 1.6em;
+  font-size: 1.8em;
   margin-top: 15px;
   font-weight: bold;
   color: #ffff66;
-  text-shadow: 2px 2px 4px #000;
+  text-shadow: 1px 1px 3px #000;
 }
 </style>
 </head>
-
 <body>
 
-<!-- Fondo mar -->
-<div id="sea"></div>
+<div id="ocean"></div>
 
-<!-- Burbujas -->
-<div class="bubble" style="left:10%; animation-duration:12s;"></div>
-<div class="bubble" style="left:30%; animation-duration:15s;"></div>
-<div class="bubble" style="left:50%; animation-duration:11s;"></div>
-<div class="bubble" style="left:70%; animation-duration:14s;"></div>
-<div class="bubble" style="left:90%; animation-duration:13s;"></div>
-
-<!-- Red móvil -->
+<!-- Red de pesca -->
 <div id="net"></div>
 
-<!-- Personajes (imagenes que debes subir igual que el HTML) -->
-<img src="cangrejo.png" class="character" style="left:15%; bottom:15%;">
-<img src="cangrejo.png" class="character" style="left:80%; bottom:20%;">
-<img src="medusa.png" class="character" style="left:25%; bottom:50%; animation-duration:5s;">
-<img src="medusa.png" class="character" style="left:75%; bottom:55%; animation-duration:4s;">
-<img src="pez.png" class="character" style="left:10%; bottom:65%; animation-duration:3.5s;">
-<img src="pez.png" class="character" style="left:85%; bottom:60%; animation-duration:4.2s;">
-<img src="estrella.png" class="character" style="left:40%; bottom:30%; animation-duration:4.8s;">
+<!-- Burbujas animadas -->
+<div class="bubble" style="left:10%; animation-duration:12s;"></div>
+<div class="bubble" style="left:25%; animation-duration:15s;"></div>
+<div class="bubble" style="left:40%; animation-duration:11s;"></div>
+<div class="bubble" style="left:60%; animation-duration:14s;"></div>
+<div class="bubble" style="left:80%; animation-duration:13s;"></div>
+
+<!-- Personajes con SVG (dibujos sencillos estilo cartoon) -->
+<svg class="character" style="left:10%; bottom:20%;" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="25" fill="#ff6666"/>
+  <circle cx="35" cy="45" r="5" fill="#fff"/>
+  <circle cx="65" cy="45" r="5" fill="#fff"/>
+  <circle cx="35" cy="45" r="2" fill="#000"/>
+  <circle cx="65" cy="45" r="2" fill="#000"/>
+  <path d="M35 65 Q50 80 65 65" stroke="#000" stroke-width="3" fill="transparent"/>
+</svg>
+
+<svg class="character" style="left:70%; bottom:50%; animation-duration:5s;" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="25" fill="#66ccff"/>
+  <path d="M25 50 Q50 25 75 50 Q50 75 25 50" fill="#88eeff"/>
+</svg>
+
+<svg class="character" style="left:40%; bottom:35%; animation-duration:4.5s;" viewBox="0 0 100 100">
+  <polygon points="50,10 60,40 90,50 60,60 50,90 40,60 10,50 40,40" fill="#ffcc33"/>
+</svg>
 
 <!-- Texto principal -->
-<h1>🌊 Un Tesoro Está por Llegar 🎬</h1>
-
-<p>Hay secretos que el mar guarda…</p>
-<p>El tesoro más importante está en camino…</p>
-<p>Su nombre, su risa y su historia aún se escriben entre las olas</p>
-
+<h1>🌊 ¡Un Tesoro Está por Llegar! 🎬</h1>
+<p>Entre las olas y risas del mar…</p>
+<p>Se esconde la historia más divertida y hermosa</p>
 <h2>🎀 Revelación & Baby Shower 🎀</h2>
 <p>📅 1 de febrero de 2026 | 🕧 12:30 p.m.</p>
 <p>📍 Salón Huiyatengo — Taxco de Alarcón, Guerrero</p>
@@ -160,26 +166,25 @@ p  { font-size: 1.2em; }
 </audio>
 
 <script>
-// ===== Cuenta regresiva al 1 feb 2026 12:30 =====
+// === Contador regresivo ===
 const countdownDisplay = document.getElementById('countdown');
 const targetDate = new Date('February 1, 2026 12:30:00').getTime();
 
 function updateCountdown() {
-  let now = new Date().getTime();
-  let diff = targetDate - now;
+  const now = new Date().getTime();
+  const diff = targetDate - now;
 
-  if (diff < 0) {
+  if(diff < 0){
     countdownDisplay.innerText = "🎉 ¡La fiesta comenzó! 🎉";
     return;
   }
 
-  let days = Math.floor(diff / (1000*60*60*24));
-  let hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  let mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-  let secs = Math.floor((diff % (1000*60)) / 1000);
-  
-  countdownDisplay.innerText = 
-    `Faltan ${days}d ${hours}h ${mins}m ${secs}s 🎈`;
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+  countdownDisplay.innerText = `Faltan ${days}d ${hours}h ${minutes}m ${seconds}s 🎈`;
 }
 
 setInterval(updateCountdown, 1000);
