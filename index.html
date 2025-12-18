@@ -5,240 +5,215 @@
 <title>Invitación Baby Shower</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --arena:#f5e8d0;
-  --arena-prof:#e6d3b0;
-  --oceano:#1e6f7b;
-  --oceano-prof:#134b54;
-  --oro:#c7a35a;
+  --arena:#f6ead1;
+  --oceano:#1f7a88;
+  --coral:#ff8aa1;
+  --sol:#ffd166;
 }
-
-*{box-sizing:border-box;}
 
 body{
   margin:0;
   min-height:100vh;
-  background:
-    radial-gradient(circle at top, #ffffff 0%, var(--arena) 38%, var(--arena-prof) 100%);
-  font-family:'Montserrat', sans-serif;
+  background:radial-gradient(circle at top,#fff,var(--arena));
   display:flex;
   justify-content:center;
   align-items:center;
+  font-family:'Baloo 2', cursive;
   overflow:hidden;
 }
 
-/* Olas animadas */
+/* OLAS */
 .wave{
   position:absolute;
-  bottom:0;
+  bottom:-40px;
   width:200%;
-  height:160px;
-  background:rgba(30,111,123,0.12);
+  height:180px;
+  background:rgba(31,122,136,.18);
   border-radius:50%;
-  animation:waveMove 14s linear infinite;
+  animation:wave 16s linear infinite;
+}
+.wave.back{
+  bottom:-10px;
+  opacity:.28;
+  animation-duration:24s;
 }
 
-.wave:nth-child(2){
-  bottom:20px;
-  opacity:.18;
-  animation-duration:20s;
-}
-
-/* Burbujas */
+/* BURBUJAS */
 .bubble{
   position:absolute;
   bottom:-50px;
   background:rgba(255,255,255,.6);
   border-radius:50%;
-  animation:bubbleUp 10s linear infinite;
+  animation:bubble 10s linear infinite;
 }
+.b1{width:14px;height:14px;left:10%;}
+.b2{width:22px;height:22px;left:30%;animation-duration:14s;}
+.b3{width:12px;height:12px;left:55%;animation-duration:9s;}
+.b4{width:18px;height:18px;left:75%;animation-duration:12s;}
 
-.b1{width:16px;height:16px;left:15%;animation-duration:12s;}
-.b2{width:10px;height:10px;left:40%;animation-duration:9s;}
-.b3{width:20px;height:20px;left:65%;animation-duration:14s;}
-.b4{width:12px;height:12px;left:80%;animation-duration:11s;}
-
-/* Tarjeta */
+/* TARJETA */
 .card{
   max-width:420px;
   width:100%;
-  background:linear-gradient(160deg,#ffffff,#f7edd8);
+  background:linear-gradient(160deg,#fff,#f7edd6);
   border-radius:36px;
-  padding:32px 26px 36px;
-  box-shadow:0 35px 70px rgba(0,0,0,.22);
+  padding:30px 24px 36px;
+  box-shadow:0 40px 80px rgba(0,0,0,.25);
+  text-align:center;
   position:relative;
   z-index:2;
-  animation:cinematicIn 1.8s ease;
+  animation:enter 1.8s ease;
 }
 
-/* Contenido */
-.content{text-align:center;}
-
-.icons{
-  font-size:34px;
-  animation:floatSlow 8s ease-in-out infinite;
+/* BRILLOS */
+.sparkle{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.6), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,.5), transparent 45%);
+  pointer-events:none;
+  animation:shine 5s ease-in-out infinite;
 }
 
+/* PERSONAJES */
+.characters{
+  font-size:38px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  animation:float 6s ease-in-out infinite;
+}
+
+/* TEXTO */
 .label{
-  font-size:12px;
-  letter-spacing:3px;
-  color:var(--oro);
-  font-weight:600;
+  color:var(--coral);
+  letter-spacing:2px;
+  font-size:13px;
   margin:10px 0;
 }
 
 h1{
   font-family:'Playfair Display', serif;
-  font-size:28px;
-  color:var(--oceano);
+  font-size:30px;
+  background:linear-gradient(90deg,var(--oceano),var(--coral),var(--sol));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
   margin-bottom:10px;
 }
 
-/* FRASE PRINCIPAL NUEVA */
 .phrase{
-  font-size:15px;
+  font-size:16px;
   color:#555;
-  margin-bottom:24px;
+  margin-bottom:22px;
 }
 
-/* Fecha */
+/* FECHA */
 .date{
-  background:linear-gradient(145deg,#ffffff,#f1e3c7);
+  background:#fff;
   border-radius:22px;
-  padding:18px;
-  margin-bottom:26px;
-  box-shadow:0 12px 26px rgba(0,0,0,.16);
-}
-
-.date strong{
-  display:block;
-  font-size:17px;
-  color:var(--oceano-prof);
-}
-
-/* Contador */
-.counter{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:28px;
-}
-
-.box{
-  width:23%;
-  background:linear-gradient(145deg,#ffffff,#f2e4cb);
-  border-radius:20px;
-  padding:12px 0;
-  box-shadow:0 10px 22px rgba(0,0,0,.18);
-  animation:floatSlow 9s ease-in-out infinite;
-}
-
-.box strong{
-  font-size:22px;
+  padding:16px;
+  box-shadow:0 10px 22px rgba(0,0,0,.15);
+  margin-bottom:24px;
   color:var(--oceano);
 }
 
-.box span{
-  font-size:11px;
+/* CONTADOR */
+.counter{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:26px;
 }
+.box{
+  width:23%;
+  background:#fff;
+  border-radius:18px;
+  padding:10px 0;
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+  animation:float 7s ease-in-out infinite;
+}
+.box strong{font-size:22px;color:var(--oceano);}
 
-/* Botones */
+/* BOTONES */
 .actions{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:14px;
 }
-
 .actions a{
   padding:16px;
   border-radius:40px;
   text-decoration:none;
   font-weight:600;
   color:white;
-  box-shadow:0 14px 30px rgba(0,0,0,.26);
-  transition:.4s;
+  box-shadow:0 14px 30px rgba(0,0,0,.3);
 }
+.map{background:linear-gradient(145deg,#f4c97b,#d6a44e);}
+.whatsapp{background:linear-gradient(145deg,#6bdc92,#3da965);}
 
-.actions a:hover{
-  transform:translateY(-4px);
-}
-
-.map{background:linear-gradient(145deg,#d9bb83,#c49a54);}
-.whatsapp{background:linear-gradient(145deg,#5fd084,#3daa60);}
-
-/* Animaciones */
-@keyframes floatSlow{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-}
-
-@keyframes cinematicIn{
-  from{opacity:0;transform:scale(.9) translateY(30px);}
-  to{opacity:1;transform:scale(1) translateY(0);}
-}
-
-@keyframes waveMove{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-
-@keyframes bubbleUp{
-  from{transform:translateY(0);opacity:0;}
-  to{transform:translateY(-700px);opacity:1;}
-}
+/* ANIMACIONES */
+@keyframes wave{to{transform:translateX(-50%);}}
+@keyframes bubble{to{transform:translateY(-700px);opacity:0;}}
+@keyframes float{50%{transform:translateY(-10px);}}
+@keyframes shine{50%{opacity:.6;}}
+@keyframes enter{from{opacity:0;transform:scale(.9);}to{opacity:1;}}
 </style>
 </head>
 
 <body>
 
-<!-- Olas -->
-<div class="wave"></div>
+<!-- SONIDO MAR -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9d55e7c43b.mp3" type="audio/mpeg">
+</audio>
+
+<!-- FONDO -->
+<div class="wave back"></div>
 <div class="wave"></div>
 
-<!-- Burbujas -->
 <div class="bubble b1"></div>
 <div class="bubble b2"></div>
 <div class="bubble b3"></div>
 <div class="bubble b4"></div>
 
 <div class="card">
-  <div class="content">
+  <div class="sparkle"></div>
 
-    <div class="icons">🐚 🫧 🐢</div>
+  <div class="characters">🐠 🐢 🐙 ⭐</div>
 
-    <div class="label">REVELACIÓN DE GÉNERO & BABY SHOWER</div>
+  <div class="label">BABY SHOWER & REVELACIÓN DE GÉNERO</div>
 
-    <h1>El mar guarda grandes tesoros…</h1>
+  <h1>El mar guarda grandes tesoros…</h1>
 
-    <p class="phrase">
-      Y después de tanto soñar y esperar, estamos a punto de descubrir el más especial de todos:
-      <br><strong>nuestro pequeño tesoro.</strong>
-    </p>
+  <p class="phrase">
+    y después de soñar y esperar,<br>
+    estamos listos para descubrir<br>
+    <strong>nuestro tesoro más especial.</strong>
+  </p>
 
-    <div class="date">
-      <strong>Domingo 1 de febrero de 2026</strong>
-      <span>12:30 p.m.</span>
-    </div>
+  <div class="date">
+    <strong>Domingo 1 de febrero de 2026</strong><br>
+    12:30 p.m.
+  </div>
 
-    <div class="counter">
-      <div class="box"><strong id="d">00</strong><br><span>DÍAS</span></div>
-      <div class="box"><strong id="h">00</strong><br><span>HORAS</span></div>
-      <div class="box"><strong id="m">00</strong><br><span>MIN</span></div>
-      <div class="box"><strong id="s">00</strong><br><span>SEG</span></div>
-    </div>
+  <div class="counter">
+    <div class="box"><strong id="d">00</strong><br>Días</div>
+    <div class="box"><strong id="h">00</strong><br>Horas</div>
+    <div class="box"><strong id="m">00</strong><br>Min</div>
+    <div class="box"><strong id="s">00</strong><br>Seg</div>
+  </div>
 
-    <div class="actions">
-      <a class="map" href="https://maps.google.com/?q=Salón+de+Eventos+Huiyatengo+Taxco" target="_blank">
-        📍 Ver ubicación
-      </a>
-
-      <a class="whatsapp" href="https://wa.me/5217621090026?text=Hola,%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20🌊🫧" target="_blank">
-        💬 Confirmar asistencia
-      </a>
-    </div>
-
+  <div class="actions">
+    <a class="map" href="https://maps.google.com/?q=Salón+de+Eventos+Huiyatengo+Taxco" target="_blank">
+      📍 Ver ubicación
+    </a>
+    <a class="whatsapp" href="https://wa.me/5217621090026?text=Hola,%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20🌊✨" target="_blank">
+      💬 Confirmar asistencia
+    </a>
   </div>
 </div>
 
@@ -247,7 +222,6 @@ const fecha = new Date("February 1, 2026 12:30:00").getTime();
 setInterval(()=>{
   const now = new Date().getTime();
   const diff = fecha - now;
-
   d.textContent = Math.floor(diff/(1000*60*60*24));
   h.textContent = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
   m.textContent = Math.floor((diff%(1000*60*60))/(1000*60));
