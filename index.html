@@ -19,7 +19,7 @@ background:#f2e3c6;
 color:#5a3a1a;
 }
 
-/* 🌊 ESCENARIO */
+/* ESCENARIO */
 .world{
 position:fixed;
 inset:0;
@@ -33,25 +33,25 @@ animation:breath 14s ease-in-out infinite;
 50%{filter:brightness(1.08)}
 }
 
-/* 🎣 RED */
+/* RED DE PESCA */
 .net{
 position:absolute;
 top:-40px;
 left:-20px;
 right:-20px;
-height:200px;
+height:220px;
 background:
 repeating-linear-gradient(45deg,rgba(130,90,40,.25) 0 2px,transparent 2px 18px),
 repeating-linear-gradient(-45deg,rgba(130,90,40,.25) 0 2px,transparent 2px 18px);
 opacity:.25;
 }
 
-/* 🫧 BURBUJAS NATURALES */
+/* BURBUJAS */
 .bubble{
 position:absolute;
 bottom:-120px;
 border-radius:50%;
-background:rgba(255,255,255,.4);
+background:rgba(255,255,255,.45);
 animation:float linear infinite;
 }
 @keyframes float{
@@ -60,13 +60,13 @@ animation:float linear infinite;
 100%{transform:translateY(-140vh) scale(1);opacity:0}
 }
 
-/* 🎬 TEXTO NARRATIVO */
+/* TEXTO INTRO */
 .story{
 position:absolute;
 top:40%;
 width:100%;
 text-align:center;
-font-size:1.8rem;
+font-size:1.9rem;
 opacity:0;
 animation:intro 6s ease forwards;
 }
@@ -77,13 +77,13 @@ animation:intro 6s ease forwards;
 100%{opacity:0}
 }
 
-/* 🏴‍☠️ BAÚL */
+/* BAÚL */
 .chest{
 position:absolute;
 left:50%;
 top:120%;
 transform:translateX(-50%);
-width:280px;
+width:300px;
 cursor:pointer;
 animation:arrive 5s cubic-bezier(.2,.8,.2,1) forwards;
 }
@@ -92,15 +92,16 @@ to{top:55%}
 }
 
 .base{
-height:120px;
+height:130px;
 background:linear-gradient(#8b5a2b,#5a3416);
-border-radius:0 0 30px 30px;
+border-radius:0 0 32px 32px;
 border:6px solid #3b1f0a;
+box-shadow:inset 0 6px rgba(255,255,255,.2);
 }
 .lid{
-height:90px;
+height:100px;
 background:linear-gradient(#a86c3a,#6b3f1d);
-border-radius:30px 30px 0 0;
+border-radius:32px 32px 0 0;
 border:6px solid #3b1f0a;
 transform-origin:bottom;
 transition:transform 3s cubic-bezier(.25,.9,.25,1);
@@ -109,30 +110,30 @@ transition:transform 3s cubic-bezier(.25,.9,.25,1);
 transform:rotateX(85deg);
 }
 
-/* ✨ LUZ VIVA */
+/* LUZ */
 .glow{
 position:absolute;
-bottom:70px;
+bottom:80px;
 left:50%;
 transform:translateX(-50%);
-width:220px;
-height:120px;
+width:240px;
+height:140px;
 background:radial-gradient(circle,#ffd77a,transparent 70%);
 opacity:0;
 transition:opacity 3s;
 }
 .chest.open .glow{opacity:1}
 
-/* 💫 TEXTO DEL TESORO */
+/* TEXTO SECRETO */
 .secret{
 position:absolute;
 top:58%;
 width:100%;
-text-align:center;
-max-width:380px;
+max-width:420px;
 margin:auto;
 left:0;right:0;
-font-size:1.3rem;
+text-align:center;
+font-size:1.35rem;
 opacity:0;
 transform:translateY(30px);
 transition:all 3s ease;
@@ -142,15 +143,15 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* 🎴 TARJETA FINAL */
+/* TARJETA */
 .card{
 position:absolute;
 top:120%;
 left:50%;
 transform:translateX(-50%);
 background:rgba(255,252,244,.97);
-padding:32px;
-border-radius:40px;
+padding:34px;
+border-radius:42px;
 max-width:420px;
 text-align:center;
 box-shadow:0 50px 100px rgba(0,0,0,.35);
@@ -162,7 +163,7 @@ to{top:8%}
 }
 
 h1{color:#c27a00;font-weight:900}
-.subtitle{color:#e1a534}
+.subtitle{color:#e1a534;font-size:1.1rem}
 
 .btn{
 display:block;
@@ -188,7 +189,7 @@ for(let i=0;i<35;i++){
 let b=document.createElement("div");
 b.className="bubble";
 b.style.left=Math.random()*100+"%";
-let s=8+Math.random()*20;
+let s=8+Math.random()*22;
 b.style.width=b.style.height=s+"px";
 b.style.animationDuration=14+Math.random()*18+"s";
 document.body.appendChild(b);
@@ -198,15 +199,15 @@ document.body.appendChild(b);
 <div class="story">Hay secretos que el mar guarda…</div>
 
 <div class="chest" id="chest">
-<div class="lid"></div>
-<div class="base"></div>
-<div class="glow"></div>
+  <div class="lid"></div>
+  <div class="base"></div>
+  <div class="glow"></div>
 </div>
 
 <div class="secret" id="secret">
 El tesoro más importante está en camino…<br><br>
-Su nombre, su risa y su historia<br>
-aún se escriben entre las olas 🌊
+Aún no sabemos si será niño o niña,<br>
+pero ya sabemos que será muy amado 💛
 </div>
 
 <div class="card">
@@ -218,13 +219,20 @@ aún se escriben entre las olas 🌊
 📍 Salón Huiyatengo<br>
 Taxco de Alarcón, Guerrero
 </p>
-<a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">📍 Ver ubicación</a>
-<a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia" target="_blank">💬 Confirmar asistencia</a>
+
+<a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">
+📍 Ver ubicación
+</a>
+
+<a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia%20al%20Baby%20Shower" target="_blank">
+💬 Confirmar asistencia
+</a>
 </div>
 
 <script>
 const chest=document.getElementById("chest");
 const secret=document.getElementById("secret");
+
 chest.onclick=()=>{
 chest.classList.add("open");
 setTimeout(()=>secret.classList.add("show"),2000);
