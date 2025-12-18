@@ -18,7 +18,9 @@
 *{box-sizing:border-box;}
 body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#00aaff;}
 
-/* INTRO CON OLAS */
+/* ========================== */
+/* INTRO ANIMADA CON OLAS */
+/* ========================== */
 .intro{
   position:fixed;
   inset:0;
@@ -26,32 +28,41 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   justify-content:center;
   align-items:center;
   color:white;
-  font-size:24px;
+  font-size:26px;
   letter-spacing:2px;
   z-index:100;
   flex-direction:column;
   overflow:hidden;
+  background:linear-gradient(to top,#0099cc,#00c0ff);
 }
 
 .intro .text{
   z-index:101;
-  font-weight:600;
+  font-weight:700;
   text-align:center;
+  font-size:28px;
+  animation:textPop 2s ease forwards;
+}
+
+@keyframes textPop{
+  0%{opacity:0; transform:scale(0.8);}
+  50%{opacity:1; transform:scale(1.1);}
+  100%{opacity:1; transform:scale(1);}
 }
 
 .intro .waves{
   position:absolute;
   bottom:0;
   width:200%;
-  height:200px;
+  height:220px;
   background:rgba(255,255,255,0.3);
   border-radius:50%;
   animation:waveMoveIntro 6s linear infinite;
 }
 
 .intro .waves.back{
-  bottom:20px;
-  opacity:0.2;
+  bottom:30px;
+  opacity:0.15;
   animation-duration:10s;
 }
 
@@ -68,7 +79,9 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   100%{opacity:0; visibility:hidden;}
 }
 
+/* ========================== */
 /* ESCENA PRINCIPAL */
+/* ========================== */
 .scene{
   position:relative;
   min-height:100vh;
@@ -100,26 +113,29 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   to{transform:translateX(-50%);}
 }
 
-/* ANIMALES MARINOS */
+/* ========================== */
+/* ANIMALES MARINOS INFANTILES */
+/* ========================== */
 .character{
   position:absolute;
-  width:100px;
   animation:float 6s ease-in-out infinite;
   filter:drop-shadow(0 8px 15px rgba(0,0,0,.25));
 }
 
-.turtle{top:15%; left:-150px; animation:enterLeft 3s forwards, float 6s infinite;}
-.fish{bottom:20%; right:-150px; animation:enterRight 3s forwards, float 5s infinite;}
-.jellyfish{top:30%; left:-120px; animation:enterLeft 4s forwards, float 5s infinite;}
-.starfish{bottom:10%; right:-100px; animation:enterRight 5s forwards, float 7s infinite;}
-.crab{bottom:5%; left:-100px; animation:enterLeft 4s forwards, float 6s infinite;}
-.seahorse{top:40%; right:-120px; animation:enterRight 4s forwards, float 6s infinite;}
+.turtle{top:15%; left:-150px; animation:enterLeft 3s forwards, float 6s infinite; width:100px;}
+.fish{bottom:20%; right:-150px; animation:enterRight 3s forwards, float 5s infinite; width:100px;}
+.jellyfish{top:30%; left:-120px; animation:enterLeft 4s forwards, float 5s infinite; width:90px;}
+.crab{bottom:5%; left:-100px; animation:enterLeft 4s forwards, float 6s infinite; width:80px;}
+.starfish{bottom:10%; right:-120px; animation:enterRight 5s forwards, float 7s infinite; width:80px;}
+.seahorse{top:40%; right:-120px; animation:enterRight 4s forwards, float 6s infinite; width:90px;}
 
 @keyframes enterLeft{to{left:5%;}}
 @keyframes enterRight{to{right:5%;}}
 @keyframes float{50%{transform:translateY(-12px);}}
 
+/* ========================== */
 /* BRILLITOS DORADOS */
+/* ========================== */
 .sparkle{
   position:absolute;
   width:8px;
@@ -133,9 +149,11 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   50%{opacity:1; transform:translateY(-10px);}
 }
 
-/* TARJETA */
+/* ========================== */
+/* TARJETA PRINCIPAL */
+/* ========================== */
 .card{
-  max-width:440px;
+  max-width:460px;
   background:linear-gradient(160deg,#fff,#f7edd6);
   border-radius:42px;
   padding:36px 30px 40px;
@@ -153,7 +171,7 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
 
 /* TEXTO */
 .label{
-  font-size:13px;
+  font-size:14px;
   letter-spacing:3px;
   color:var(--coral);
   margin-bottom:12px;
@@ -162,7 +180,7 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
 
 h1{
   font-family:'Playfair Display', serif;
-  font-size:32px;
+  font-size:34px;
   background:linear-gradient(90deg,var(--mar),var(--coral),var(--oro));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -238,10 +256,9 @@ h1{
 .whatsapp{background:linear-gradient(145deg,#5bd48c,#3ba96c);}
 </style>
 </head>
-
 <body>
 
-<!-- INTRO CON OLAS -->
+<!-- INTRO ANIMADA -->
 <div class="intro" id="intro">
   <div class="text">UNA NUEVA HISTORIA ESTÁ POR COMENZAR…</div>
   <div class="waves"></div>
@@ -250,17 +267,16 @@ h1{
 
 <!-- ESCENA PRINCIPAL -->
 <div class="scene" id="scene">
-
   <div class="wave back"></div>
   <div class="wave"></div>
 
-  <!-- ANIMALES MARINOS -->
+  <!-- ANIMALES MARINOS INFANTILES -->
   <img class="character turtle" src="https://i.imgur.com/9YqQX4N.png">
   <img class="character fish" src="https://i.imgur.com/0XKzn7K.png">
   <img class="character jellyfish" src="https://i.imgur.com/IOeDq0F.png">
-  <img class="character starfish" src="https://i.imgur.com/fp5A2k1.png">
-  <img class="character crab" src="https://i.imgur.com/N6fQZgE.png">
-  <img class="character seahorse" src="https://i.imgur.com/0I9jvKM.png">
+  <img class="character crab" src="https://i.imgur.com/ZkHf6u7.png">
+  <img class="character starfish" src="https://i.imgur.com/Wf8tOZy.png">
+  <img class="character seahorse" src="https://i.imgur.com/j8aF6zN.png">
 
   <!-- TARJETA -->
   <div class="card">
@@ -322,17 +338,17 @@ function updateCounter() {
 setInterval(updateCounter,1000);
 updateCounter();
 
-// TRANSICIÓN INTRO
+// TRANSICIÓN INTRO Y BRILLITOS
 setTimeout(()=>{
   const intro = document.getElementById('intro');
   intro.classList.add('fadeOut');
 
-  // BRILLITOS DORADOS
-  for(let i=0;i<30;i++){
+  // CREAR BRILLITOS DORADOS
+  for(let i=0;i<40;i++){
     const spark = document.createElement('div');
     spark.classList.add('sparkle');
     spark.style.left = Math.random()*100+'%';
-    spark.style.top = Math.random()*100+'%';
+    spark.style.top = Math.random()*80+'%';
     spark.style.animationDuration = (1+Math.random()*2)+'s';
     document.body.appendChild(spark);
   }
