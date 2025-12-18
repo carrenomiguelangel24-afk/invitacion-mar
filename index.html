@@ -2,122 +2,191 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Baby Shower & Revelación de Género</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Invitación Baby Shower</title>
 <style>
-body{
-  margin:0;
-  background:#0bbcd6;
-  display:flex;
-  justify-content:center;
-  font-family:Arial, sans-serif;
+/* === Estilos base === */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #f4e2b1; /* color arena */
+  overflow-x: hidden;
+  text-align: center;
 }
 
-.container{
-  max-width:420px;
-  width:100%;
-  text-align:center;
-  animation:fadeIn 1.5s ease;
+/* === Fondo marino animado === */
+#sea {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #00aaff 40%, #0077cc 100%);
+  z-index: -3;
+  overflow: hidden;
 }
 
-img{
-  width:100%;
-  display:block;
+/* === Burbujas === */
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  width: 12px; height: 12px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  animation: rise 10s infinite ease-in;
+}
+@keyframes rise {
+  0% { bottom: -50px; opacity: 0.5; transform: scale(0.6); }
+  50% { opacity: 1; }
+  100% { bottom: 110%; opacity: 0; transform: scale(1); }
 }
 
-.countdown{
-  display:flex;
-  justify-content:space-around;
-  background:rgba(255,255,255,0.9);
-  margin:10px;
-  padding:10px;
-  border-radius:15px;
-  animation:bounce 2s infinite;
+/* === Red de pesca === */
+#net {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 250px;
+  height: 150px;
+  margin-left: -125px;
+  border-top: 5px solid #ff9999;
+  border-left: 5px solid #ff9999;
+  border-right: 5px solid #ff9999;
+  border-radius: 50%;
+  animation: swing 4s infinite alternate ease-in-out;
+}
+@keyframes swing {
+  0% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
 }
 
-.countdown div span{
-  font-size:22px;
-  font-weight:bold;
-  display:block;
+/* === Personajes animados (SVG) === */
+.character {
+  position: absolute;
+  width: 60px;
+  animation: float 4s infinite alternate ease-in-out;
+}
+@keyframes float {
+  to { transform: translateY(-20px); }
 }
 
-.buttons{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin:15px;
+/* === Texto principal === */
+h1, h2, p {
+  margin: 10px auto;
+  max-width: 90%;
+  color: #fff;
+  text-shadow: 2px 2px 5px #000;
 }
 
-.buttons a{
-  padding:14px;
-  border-radius:30px;
-  text-decoration:none;
-  color:white;
-  font-weight:bold;
-  animation:pulse 1.5s infinite;
+h1 { font-size: 2.4em; }
+h2 { font-size: 1.8em; }
+p  { font-size: 1.2em; }
+
+/* === Botones === */
+.button {
+  display: inline-block;
+  margin: 15px;
+  padding: 12px 25px;
+  background: #ff69b4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.button:hover {
+  transform: translateY(-4px);
+  background: #ff1493;
 }
 
-.map{ background:#ff8ab4; }
-.whatsapp{ background:#4caf50; }
-
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.05);}
-  100%{transform:scale(1);}
-}
-
-@keyframes bounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-5px);}
-}
-
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
+/* === Contador === */
+#countdown {
+  font-size: 1.6em;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #ffff66;
+  text-shadow: 2px 2px 4px #000;
 }
 </style>
 </head>
-
 <body>
-<div class="container">
 
-  <!-- IMAGEN -->
-  <img src="invitacion.png" alt="Invitación Baby Shower">
+<!-- Fondo mar -->
+<div id="sea"></div>
 
-  <!-- CONTADOR -->
-  <div class="countdown">
-    <div><span id="d">00</span>Días</div>
-    <div><span id="h">00</span>Horas</div>
-    <div><span id="m">00</span>Min</div>
-    <div><span id="s">00</span>Seg</div>
-  </div>
+<!-- Burbujas -->
+<div class="bubble" style="left:10%; animation-duration:12s;"></div>
+<div class="bubble" style="left:30%; animation-duration:15s;"></div>
+<div class="bubble" style="left:50%; animation-duration:11s;"></div>
+<div class="bubble" style="left:70%; animation-duration:14s;"></div>
+<div class="bubble" style="left:90%; animation-duration:13s;"></div>
 
-  <!-- BOTONES -->
-  <div class="buttons">
-    <a class="map" href="https://maps.google.com/?q=Salón+de+Eventos+Huiyatengo+Taxco" target="_blank">
-      📍 Ver ubicación
-    </a>
+<!-- Red móvil -->
+<div id="net"></div>
 
-    <a class="whatsapp" href="https://wa.me/521XXXXXXXXXX?text=Hola,%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20💙💗" target="_blank">
-      💬 Confirmar asistencia
-    </a>
-  </div>
+<!-- Personajes SVG animados -->
+<svg class="character" style="left:15%; bottom:15%;" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="25" fill="#ff6666"/>
+  <circle cx="35" cy="45" r="5" fill="#fff"/>
+  <circle cx="65" cy="45" r="5" fill="#fff"/>
+  <circle cx="35" cy="45" r="2" fill="#000"/>
+  <circle cx="65" cy="45" r="2" fill="#000"/>
+  <path d="M35 65 Q50 80 65 65" stroke="#000" stroke-width="3" fill="transparent"/>
+</svg>
 
-</div>
+<svg class="character" style="left:70%; bottom:50%; animation-duration:5s;" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="25" fill="#66ccff"/>
+  <path d="M25 50 Q50 25 75 50 Q50 75 25 50" fill="#88eeff"/>
+</svg>
+
+<svg class="character" style="left:40%; bottom:35%; animation-duration:4.5s;" viewBox="0 0 100 100">
+  <polygon points="50,10 60,40 90,50 60,60 50,90 40,60 10,50 40,40" fill="#ffcc33"/>
+</svg>
+
+<!-- Texto principal -->
+<h1>🌊 Un Tesoro Está por Llegar 🎬</h1>
+<p>Hay secretos que el mar guarda…</p>
+<p>El tesoro más importante está en camino…</p>
+<h2>🎀 Revelación & Baby Shower 🎀</h2>
+<p>📅 1 de febrero de 2026 | 🕧 12:30 p.m.</p>
+<p>📍 Salón Huiyatengo — Taxco de Alarcón, Guerrero</p>
+
+<!-- Contador regresivo -->
+<div id="countdown"></div>
+
+<!-- Botones -->
+<a href="https://wa.me/tu_numero?text=Confirmo%20asistencia%20al%20Baby%20Shower" class="button" target="_blank">✅ Confirmar</a>
+<a href="https://goo.gl/maps/tu_mapa" class="button" target="_blank">📍 Ver ubicación</a>
+
+<!-- Música de fondo -->
+<audio autoplay loop>
+  <source src="musica-mar.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-const fecha = new Date("February 1, 2026 12:30:00").getTime();
+// ===== Cuenta regresiva =====
+const countdownDisplay = document.getElementById('countdown');
+const targetDate = new Date('February 1, 2026 12:30:00').getTime();
 
-setInterval(()=>{
-  const ahora = new Date().getTime();
-  const dif = fecha - ahora;
+function updateCountdown() {
+  let now = new Date().getTime();
+  let diff = targetDate - now;
 
-  document.getElementById("d").innerHTML = Math.floor(dif/(1000*60*60*24));
-  document.getElementById("h").innerHTML = Math.floor((dif%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("m").innerHTML = Math.floor((dif%(1000*60*60))/(1000*60));
-  document.getElementById("s").innerHTML = Math.floor((dif%(1000*60))/1000);
-},1000);
+  if (diff < 0) {
+    countdownDisplay.innerText = "🎉 ¡La fiesta comenzó! 🎉";
+    return;
+  }
+
+  let days = String(Math.floor(diff / (1000*60*60*24))).padStart(2,'0');
+  let hours = String(Math.floor((diff % (1000*60*60*24)) / (1000*60*60))).padStart(2,'0');
+  let mins = String(Math.floor((diff % (1000*60*60)) / (1000*60))).padStart(2,'0');
+  let secs = String(Math.floor((diff % (1000*60)) / 1000)).padStart(2,'0');
+  
+  countdownDisplay.innerText = `${days}d : ${hours}h : ${mins}m : ${secs}s`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 
 </body>
