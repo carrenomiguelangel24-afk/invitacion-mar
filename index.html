@@ -2,91 +2,163 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Invitación Baby Shower</title>
+<title>Baby Shower & Revelación de Género</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root{
+  --arena:#f3e6cf;
+  --arena-profunda:#e8d6b8;
+  --azul-mar:#1f6f7a;
+  --dorado:#c9a45c;
+}
+
 body{
   margin:0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(#f5e3c3, #f9edd8);
-  overflow-x:hidden;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top, #ffffff 0%, var(--arena) 35%, var(--arena-profunda) 100%);
+  font-family: 'Segoe UI', sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.container{
+.card{
+  width:100%;
   max-width:420px;
-  margin:auto;
-  padding:20px;
-  text-align:center;
+  background:linear-gradient(145deg,#ffffff,#f6ebd6);
+  border-radius:28px;
+  padding:26px 22px 30px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.12),
+    inset 0 1px 1px rgba(255,255,255,.8);
   position:relative;
-  animation:fade 1.5s ease;
+  animation:appear 1.6s ease;
+  overflow:hidden;
 }
 
-/* Red de pesca */
-.net{
+/* Red decorativa */
+.card::before{
+  content:"";
   position:absolute;
-  top:-20px;
-  left:-40px;
-  width:120%;
-  opacity:0.15;
-  z-index:0;
+  inset:0;
+  background:url("https://svgshare.com/i/16vC.svg") center/120% no-repeat;
+  opacity:.06;
+  pointer-events:none;
 }
 
-/* Contenido */
 .content{
   position:relative;
   z-index:2;
+  text-align:center;
+}
+
+/* Títulos */
+.subtitle{
+  color:var(--dorado);
+  font-weight:600;
+  letter-spacing:1px;
+  font-size:13px;
 }
 
 h1{
+  color:var(--azul-mar);
   font-size:26px;
-  color:#1c6b7a;
+  margin:10px 0 8px;
 }
 
-p{
-  color:#444;
+.frase{
+  color:#555;
   font-size:15px;
+  margin-bottom:20px;
 }
 
-/* Elementos marinos */
+/* Detalles marinos */
 .sea{
-  font-size:30px;
-  animation:float 3s ease-in-out infinite;
+  font-size:28px;
+  margin-bottom:10px;
+  animation:float 6s ease-in-out infinite;
+}
+
+/* Fecha */
+.date-box{
+  background:linear-gradient(145deg,#ffffff,#efe1c7);
+  border-radius:18px;
+  padding:14px;
+  margin:18px 0;
+  box-shadow:
+    0 8px 18px rgba(0,0,0,.12),
+    inset 0 1px 1px rgba(255,255,255,.9);
+}
+
+.date-box strong{
+  display:block;
+  font-size:16px;
+  color:var(--azul-mar);
+}
+
+.date-box span{
+  font-size:14px;
+  color:#555;
 }
 
 /* Contador */
 .countdown{
   display:flex;
-  justify-content:space-around;
-  background:#ffffffcc;
-  padding:12px;
-  border-radius:15px;
+  justify-content:space-between;
   margin:20px 0;
 }
 
-.countdown div{
-  font-weight:bold;
-  color:#1c6b7a;
+.time{
+  width:22%;
+  background:linear-gradient(145deg,#ffffff,#f0e2c9);
+  border-radius:16px;
+  padding:10px 0;
+  box-shadow:0 6px 14px rgba(0,0,0,.12);
+  animation:float 7s ease-in-out infinite;
+}
+
+.time strong{
+  font-size:20px;
+  color:var(--azul-mar);
+}
+
+.time span{
+  font-size:11px;
+  color:#666;
 }
 
 /* Botones */
 .buttons{
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:14px;
+  margin-top:10px;
 }
 
 .buttons a{
+  text-decoration:none;
   padding:14px;
   border-radius:30px;
-  text-decoration:none;
+  font-weight:600;
   color:white;
-  font-weight:bold;
-  animation:pulse 1.5s infinite;
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
+  transition:.4s;
 }
 
-.map{ background:#e3b565; }
-.whatsapp{ background:#4caf50; }
+.buttons a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 26px rgba(0,0,0,.22);
+}
+
+.map{
+  background:linear-gradient(145deg,#d6b67c,#c19a55);
+}
+
+.whatsapp{
+  background:linear-gradient(145deg,#59c47a,#3fae61);
+}
 
 /* Animaciones */
 @keyframes float{
@@ -94,41 +166,40 @@ p{
   50%{transform:translateY(-6px);}
 }
 
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.05);}
-  100%{transform:scale(1);}
-}
-
-@keyframes fade{
-  from{opacity:0;}
-  to{opacity:1;}
+@keyframes appear{
+  from{opacity:0; transform:scale(.95);}
+  to{opacity:1; transform:scale(1);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-  <!-- Red de pesca -->
-  <img class="net" src="https://svgshare.com/i/16vC.svg" alt="red de pesca">
-
+<div class="card">
   <div class="content">
-    <div class="sea">🐚 ⭐ 🐠</div>
 
-    <h1>Baby Shower & Revelación de Género</h1>
-    <p>¡Una nueva aventura está por comenzar!</p>
+    <div class="sea">🐚 ⭐ 🐢</div>
 
-    <!-- Contador -->
-    <div class="countdown">
-      <div><span id="d">00</span><br>Días</div>
-      <div><span id="h">00</span><br>Horas</div>
-      <div><span id="m">00</span><br>Min</div>
-      <div><span id="s">00</span><br>Seg</div>
+    <div class="subtitle">REVELACIÓN DE GÉNERO & BABY SHOWER</div>
+
+    <h1>Una nueva aventura<br>está por comenzar</h1>
+
+    <p class="frase">
+      Entre arena, mar y sueños, celebramos la llegada de un pequeño milagro.
+    </p>
+
+    <div class="date-box">
+      <strong>Domingo 1 de febrero de 2026</strong>
+      <span>12:30 p.m.</span>
     </div>
 
-    <!-- Botones -->
+    <div class="countdown">
+      <div class="time"><strong id="d">00</strong><br><span>Días</span></div>
+      <div class="time"><strong id="h">00</strong><br><span>Horas</span></div>
+      <div class="time"><strong id="m">00</strong><br><span>Min</span></div>
+      <div class="time"><strong id="s">00</strong><br><span>Seg</span></div>
+    </div>
+
     <div class="buttons">
       <a class="map" href="https://maps.google.com/?q=Salón+de+Eventos+Huiyatengo+Taxco" target="_blank">
         📍 Ver ubicación
@@ -138,19 +209,20 @@ p{
         💬 Confirmar asistencia
       </a>
     </div>
+
   </div>
 </div>
 
 <script>
 const fecha = new Date("February 1, 2026 12:30:00").getTime();
 setInterval(()=>{
-  const ahora = new Date().getTime();
-  const dif = fecha - ahora;
+  const now = new Date().getTime();
+  const diff = fecha - now;
 
-  d.innerHTML = Math.floor(dif/(1000*60*60*24));
-  h.innerHTML = Math.floor((dif%(1000*60*60*24))/(1000*60*60));
-  m.innerHTML = Math.floor((dif%(1000*60*60))/(1000*60));
-  s.innerHTML = Math.floor((dif%(1000*60))/1000);
+  d.textContent = Math.floor(diff/(1000*60*60*24));
+  h.textContent = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  m.textContent = Math.floor((diff%(1000*60*60))/(1000*60));
+  s.textContent = Math.floor((diff%(1000*60))/1000);
 },1000);
 </script>
 
