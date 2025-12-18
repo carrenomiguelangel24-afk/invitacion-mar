@@ -2,75 +2,77 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Un Tesoro por Descubrir</title>
+<title>Un Tesoro Está por Llegar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
-body{
+html,body{
 margin:0;
-font-family:'Baloo 2',cursive;
-background:#f5e2b8;
+padding:0;
+width:100%;
+height:100%;
+font-family:'Nunito',sans-serif;
 overflow:hidden;
-color:#5b3a14;
+background:#f2e3c6;
+color:#5a3a1a;
 }
 
-/* 🌊 ESCENA MAR */
-.scene{
+/* 🌊 ESCENARIO */
+.world{
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top,#ffffffaa,transparent 60%),
-linear-gradient(to bottom,#fff7e2,#ecd3a2);
-animation:seaMove 20s ease-in-out infinite alternate;
+radial-gradient(circle at top,#fff7e8,transparent 60%),
+linear-gradient(#f7e8cb,#e8d2a5);
+animation:breath 14s ease-in-out infinite;
 }
-@keyframes seaMove{
-from{filter:brightness(1)}
-to{filter:brightness(1.15)}
+@keyframes breath{
+0%,100%{filter:brightness(1)}
+50%{filter:brightness(1.08)}
 }
 
 /* 🎣 RED */
 .net{
-position:fixed;
-top:0;
-left:0;
-right:0;
-height:160px;
-background:
-repeating-linear-gradient(45deg,rgba(150,110,60,.25) 0 2px,transparent 2px 14px),
-repeating-linear-gradient(-45deg,rgba(150,110,60,.25) 0 2px,transparent 2px 14px);
-opacity:.3;
-}
-
-/* 🫧 BURBUJAS CINEMA */
-.bubble{
-position:fixed;
-bottom:-100px;
-border-radius:50%;
-background:rgba(255,255,255,.45);
-animation:cinemaBubble linear infinite;
-}
-@keyframes cinemaBubble{
-0%{transform:translate(0,0) scale(.4);opacity:0}
-30%{opacity:.6}
-100%{transform:translate(80px,-140vh) scale(1);opacity:0}
-}
-
-/* 🎬 TEXTO TRAILER */
-.trailer{
 position:absolute;
-top:35%;
+top:-40px;
+left:-20px;
+right:-20px;
+height:200px;
+background:
+repeating-linear-gradient(45deg,rgba(130,90,40,.25) 0 2px,transparent 2px 18px),
+repeating-linear-gradient(-45deg,rgba(130,90,40,.25) 0 2px,transparent 2px 18px);
+opacity:.25;
+}
+
+/* 🫧 BURBUJAS NATURALES */
+.bubble{
+position:absolute;
+bottom:-120px;
+border-radius:50%;
+background:rgba(255,255,255,.4);
+animation:float linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(0) scale(.3);opacity:0}
+20%{opacity:.6}
+100%{transform:translateY(-140vh) scale(1);opacity:0}
+}
+
+/* 🎬 TEXTO NARRATIVO */
+.story{
+position:absolute;
+top:40%;
 width:100%;
 text-align:center;
-font-size:2.2rem;
-letter-spacing:2px;
+font-size:1.8rem;
 opacity:0;
-animation:fadeTrailer 4s ease forwards;
+animation:intro 6s ease forwards;
 }
-@keyframes fadeTrailer{
+@keyframes intro{
 0%{opacity:0;transform:translateY(20px)}
-30%{opacity:1}
+20%{opacity:1}
 80%{opacity:1}
 100%{opacity:0}
 }
@@ -81,67 +83,59 @@ position:absolute;
 left:50%;
 top:120%;
 transform:translateX(-50%);
-width:260px;
-height:170px;
+width:280px;
 cursor:pointer;
-animation:chestIn 4s ease forwards;
+animation:arrive 5s cubic-bezier(.2,.8,.2,1) forwards;
 }
-@keyframes chestIn{
+@keyframes arrive{
 to{top:55%}
 }
 
-.chest-base{
-position:absolute;
-bottom:0;
-width:100%;
-height:100px;
+.base{
+height:120px;
 background:linear-gradient(#8b5a2b,#5a3416);
-border-radius:0 0 20px 20px;
-border:5px solid #3b1f0a;
+border-radius:0 0 30px 30px;
+border:6px solid #3b1f0a;
 }
-.chest-lid{
-position:absolute;
-top:0;
-width:100%;
-height:80px;
+.lid{
+height:90px;
 background:linear-gradient(#a86c3a,#6b3f1d);
-border-radius:20px 20px 0 0;
-border:5px solid #3b1f0a;
+border-radius:30px 30px 0 0;
+border:6px solid #3b1f0a;
 transform-origin:bottom;
-transition:transform 2.5s cubic-bezier(.2,.8,.2,1);
+transition:transform 3s cubic-bezier(.25,.9,.25,1);
+}
+.chest.open .lid{
+transform:rotateX(85deg);
 }
 
-.chest.open .chest-lid{
-transform:rotateX(80deg);
-}
-
-/* ✨ LUZ */
+/* ✨ LUZ VIVA */
 .glow{
 position:absolute;
-bottom:60px;
+bottom:70px;
 left:50%;
 transform:translateX(-50%);
-width:200px;
-height:100px;
-background:radial-gradient(circle,#ffd700,transparent 70%);
+width:220px;
+height:120px;
+background:radial-gradient(circle,#ffd77a,transparent 70%);
 opacity:0;
-transition:opacity 2s;
+transition:opacity 3s;
 }
-.chest.open .glow{opacity:.9}
+.chest.open .glow{opacity:1}
 
-/* 📜 TEXTO EMERGENTE */
+/* 💫 TEXTO DEL TESORO */
 .secret{
 position:absolute;
-top:55%;
+top:58%;
 width:100%;
 text-align:center;
-font-size:1.3rem;
-opacity:0;
-max-width:360px;
+max-width:380px;
 margin:auto;
 left:0;right:0;
-transition:opacity 2s,transform 2s;
-transform:translateY(40px);
+font-size:1.3rem;
+opacity:0;
+transform:translateY(30px);
+transition:all 3s ease;
 }
 .secret.show{
 opacity:1;
@@ -154,77 +148,76 @@ position:absolute;
 top:120%;
 left:50%;
 transform:translateX(-50%);
+background:rgba(255,252,244,.97);
+padding:32px;
+border-radius:40px;
 max-width:420px;
-background:rgba(255,248,232,.96);
-border-radius:36px;
-padding:30px;
 text-align:center;
-box-shadow:0 40px 80px rgba(0,0,0,.3);
-animation:cardIn 3s ease forwards;
-animation-delay:6s;
+box-shadow:0 50px 100px rgba(0,0,0,.35);
+animation:card 4s cubic-bezier(.2,.9,.2,1) forwards;
+animation-delay:7s;
 }
-@keyframes cardIn{
-to{top:10%}
+@keyframes card{
+to{top:8%}
 }
 
-h1{color:#c87400}
-.subtitle{color:#e39a2d}
+h1{color:#c27a00;font-weight:900}
+.subtitle{color:#e1a534}
 
 .btn{
 display:block;
-margin:14px auto;
+margin:16px auto;
 padding:14px;
 border-radius:30px;
-text-decoration:none;
 font-weight:800;
 color:white;
+text-decoration:none;
 }
-.maps{background:#e39a2d}
+.maps{background:#e1a534}
 .wa{background:#25d366}
 </style>
 </head>
 
 <body>
 
-<div class="scene"></div>
+<div class="world"></div>
 <div class="net"></div>
 
 <script>
-for(let i=0;i<28;i++){
+for(let i=0;i<35;i++){
 let b=document.createElement("div");
 b.className="bubble";
 b.style.left=Math.random()*100+"%";
-b.style.width=b.style.height=(10+Math.random()*22)+"px";
-b.style.animationDuration=(14+Math.random()*12)+"s";
+let s=8+Math.random()*20;
+b.style.width=b.style.height=s+"px";
+b.style.animationDuration=14+Math.random()*18+"s";
 document.body.appendChild(b);
 }
 </script>
 
-<div class="trailer">Del fondo del mar…</div>
+<div class="story">Hay secretos que el mar guarda…</div>
 
 <div class="chest" id="chest">
-  <div class="chest-lid"></div>
-  <div class="chest-base"></div>
-  <div class="glow"></div>
+<div class="lid"></div>
+<div class="base"></div>
+<div class="glow"></div>
 </div>
 
 <div class="secret" id="secret">
-✨ El tesoro más grande está por llegar…<br>
-pero su secreto aún duerme en el mar 🌊<br><br>
-Muy pronto sabremos quién viene en camino 💙💖
+El tesoro más importante está en camino…<br><br>
+Su nombre, su risa y su historia<br>
+aún se escriben entre las olas 🌊
 </div>
 
 <div class="card">
-<h1>Revelación de Género & Baby Shower</h1>
-<div class="subtitle">Una aventura está por comenzar</div>
-
+<h1>Revelación & Baby Shower</h1>
+<div class="subtitle">Una historia comienza</div>
 <p>
-📅 <strong>1 de febrero de 2026</strong><br>
-⏰ <strong>12:30 p.m.</strong><br>
-📍 <strong>Salón Huiyatengo</strong><br>
+📅 1 de febrero de 2026<br>
+⏰ 12:30 p.m.<br>
+📍 Salón Huiyatengo<br>
 Taxco de Alarcón, Guerrero
 </p>
-
 <a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">📍 Ver ubicación</a>
 <a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia" target="_blank">💬 Confirmar asistencia</a>
 </div>
@@ -232,10 +225,9 @@ Taxco de Alarcón, Guerrero
 <script>
 const chest=document.getElementById("chest");
 const secret=document.getElementById("secret");
-
 chest.onclick=()=>{
 chest.classList.add("open");
-setTimeout(()=>{secret.classList.add("show")},1800);
+setTimeout(()=>secret.classList.add("show"),2000);
 };
 </script>
 
