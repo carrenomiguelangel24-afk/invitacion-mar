@@ -2,242 +2,44 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Un Tesoro Está por Llegar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
-
-<style>
-html,body{
-margin:0;
-padding:0;
-width:100%;
-height:100%;
-font-family:'Nunito',sans-serif;
-overflow:hidden;
-background:#f2e3c6;
-color:#5a3a1a;
-}
-
-/* ESCENARIO */
-.world{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at top,#fff7e8,transparent 60%),
-linear-gradient(#f7e8cb,#e8d2a5);
-animation:breath 14s ease-in-out infinite;
-}
-@keyframes breath{
-0%,100%{filter:brightness(1)}
-50%{filter:brightness(1.08)}
-}
-
-/* RED DE PESCA */
-.net{
-position:absolute;
-top:-40px;
-left:-20px;
-right:-20px;
-height:220px;
-background:
-repeating-linear-gradient(45deg,rgba(130,90,40,.25) 0 2px,transparent 2px 18px),
-repeating-linear-gradient(-45deg,rgba(130,90,40,.25) 0 2px,transparent 2px 18px);
-opacity:.25;
-}
-
-/* BURBUJAS */
-.bubble{
-position:absolute;
-bottom:-120px;
-border-radius:50%;
-background:rgba(255,255,255,.45);
-animation:float linear infinite;
-}
-@keyframes float{
-0%{transform:translateY(0) scale(.3);opacity:0}
-20%{opacity:.6}
-100%{transform:translateY(-140vh) scale(1);opacity:0}
-}
-
-/* TEXTO INTRO */
-.story{
-position:absolute;
-top:40%;
-width:100%;
-text-align:center;
-font-size:1.9rem;
-opacity:0;
-animation:intro 6s ease forwards;
-}
-@keyframes intro{
-0%{opacity:0;transform:translateY(20px)}
-20%{opacity:1}
-80%{opacity:1}
-100%{opacity:0}
-}
-
-/* BAÚL */
-.chest{
-position:absolute;
-left:50%;
-top:120%;
-transform:translateX(-50%);
-width:300px;
-cursor:pointer;
-animation:arrive 5s cubic-bezier(.2,.8,.2,1) forwards;
-}
-@keyframes arrive{
-to{top:55%}
-}
-
-.base{
-height:130px;
-background:linear-gradient(#8b5a2b,#5a3416);
-border-radius:0 0 32px 32px;
-border:6px solid #3b1f0a;
-box-shadow:inset 0 6px rgba(255,255,255,.2);
-}
-.lid{
-height:100px;
-background:linear-gradient(#a86c3a,#6b3f1d);
-border-radius:32px 32px 0 0;
-border:6px solid #3b1f0a;
-transform-origin:bottom;
-transition:transform 3s cubic-bezier(.25,.9,.25,1);
-}
-.chest.open .lid{
-transform:rotateX(85deg);
-}
-
-/* LUZ */
-.glow{
-position:absolute;
-bottom:80px;
-left:50%;
-transform:translateX(-50%);
-width:240px;
-height:140px;
-background:radial-gradient(circle,#ffd77a,transparent 70%);
-opacity:0;
-transition:opacity 3s;
-}
-.chest.open .glow{opacity:1}
-
-/* TEXTO SECRETO */
-.secret{
-position:absolute;
-top:58%;
-width:100%;
-max-width:420px;
-margin:auto;
-left:0;right:0;
-text-align:center;
-font-size:1.35rem;
-opacity:0;
-transform:translateY(30px);
-transition:all 3s ease;
-}
-.secret.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* TARJETA */
-.card{
-position:absolute;
-top:120%;
-left:50%;
-transform:translateX(-50%);
-background:rgba(255,252,244,.97);
-padding:34px;
-border-radius:42px;
-max-width:420px;
-text-align:center;
-box-shadow:0 50px 100px rgba(0,0,0,.35);
-animation:card 4s cubic-bezier(.2,.9,.2,1) forwards;
-animation-delay:7s;
-}
-@keyframes card{
-to{top:8%}
-}
-
-h1{color:#c27a00;font-weight:900}
-.subtitle{color:#e1a534;font-size:1.1rem}
-
-.btn{
-display:block;
-margin:16px auto;
-padding:14px;
-border-radius:30px;
-font-weight:800;
-color:white;
-text-decoration:none;
-}
-.maps{background:#e1a534}
-.wa{background:#25d366}
-</style>
+<title>Invitación Baby Shower Mar</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="world"></div>
-<div class="net"></div>
-
-<script>
-for(let i=0;i<35;i++){
-let b=document.createElement("div");
-b.className="bubble";
-b.style.left=Math.random()*100+"%";
-let s=8+Math.random()*22;
-b.style.width=b.style.height=s+"px";
-b.style.animationDuration=14+Math.random()*18+"s";
-document.body.appendChild(b);
-}
-</script>
-
-<div class="story">Hay secretos que el mar guarda…</div>
-
-<div class="chest" id="chest">
-  <div class="lid"></div>
-  <div class="base"></div>
-  <div class="glow"></div>
+<!-- Fondo marino con burbujas -->
+<div class="ocean">
+  <div class="bubble bubble1"></div>
+  <div class="bubble bubble2"></div>
+  <div class="bubble bubble3"></div>
+  <div class="bubble bubble4"></div>
 </div>
 
-<div class="secret" id="secret">
-El tesoro más importante está en camino…<br><br>
-Aún no sabemos si será niño o niña,<br>
-pero ya sabemos que será muy amado 💛
-</div>
+<!-- Sección principal -->
+<section class="cinematic">
+  <h1 class="fade-in">🎬 Un Tesoro Está por Llegar</h1>
+  <p class="fade-in delay1">Hay secretos que el mar guarda…</p>
+  <p class="fade-in delay2">Y este es el más hermoso de todos.</p>
+  
+  <h2 class="fade-in delay3">Baby Shower de [Nombre del Bebé]</h2>
+  <p class="fade-in delay4">📅 1 de febrero de 2026 | 🕧 12:30 p.m.</p>
+  <p class="fade-in delay5">📍 Salón Huiyatengo — Taxco de Alarcón, Guerrero</p>
+  
+  <p class="fade-in delay6">Ven a descubrir el tesoro que el mar ha guardado para nosotros.  
+  Tu presencia hará esta historia aún más especial.</p>
 
-<div class="card">
-<h1>Revelación & Baby Shower</h1>
-<div class="subtitle">Una historia comienza</div>
-<p>
-📅 1 de febrero de 2026<br>
-⏰ 12:30 p.m.<br>
-📍 Salón Huiyatengo<br>
-Taxco de Alarcón, Guerrero
-</p>
+  <!-- Botones -->
+  <div class="buttons fade-in delay7">
+    <a href="https://wa.me/tu_numero?text=Confirmo%20asistencia%20al%20Baby%20Shower" target="_blank">Confirmar por WhatsApp</a>
+    <a href="https://goo.gl/maps/tu_mapa" target="_blank">Ver Ubicación</a>
+  </div>
+</section>
 
-<a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">
-📍 Ver ubicación
-</a>
-
-<a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia%20al%20Baby%20Shower" target="_blank">
-💬 Confirmar asistencia
-</a>
-</div>
-
-<script>
-const chest=document.getElementById("chest");
-const secret=document.getElementById("secret");
-
-chest.onclick=()=>{
-chest.classList.add("open");
-setTimeout(()=>secret.classList.add("show"),2000);
-};
-</script>
+<!-- Música de fondo -->
+<audio autoplay loop>
+  <source src="musica-mar.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
