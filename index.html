@@ -11,91 +11,135 @@
 body{
 margin:0;
 font-family:'Baloo 2',cursive;
-background:linear-gradient(to bottom,#fff4db,#f1ddb0);
+background:linear-gradient(to bottom,#fff7e2,#ecd3a2);
 color:#5b3a14;
 overflow-x:hidden;
 }
 
-/* 🌊 FONDO MAR + ARENA */
+/* 🌊 FONDO */
 .sea{
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top,#ffffff,transparent 60%),
-linear-gradient(to bottom,#fff7e2,#e7cf9a);
+radial-gradient(circle at top,#ffffff 0%,transparent 60%),
+linear-gradient(to bottom,#fff7e2,#ecd3a2);
 z-index:-10;
 }
 
-/* 🫧 BURBUJAS AMBIENTE */
+/* 🎣 RED */
+.net{
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:140px;
+background:
+repeating-linear-gradient(45deg,rgba(150,110,60,.25) 0 2px,transparent 2px 14px),
+repeating-linear-gradient(-45deg,rgba(150,110,60,.25) 0 2px,transparent 2px 14px);
+opacity:.35;
+z-index:-1;
+}
+
+/* 🫧 BURBUJAS FLUIDAS */
 .bubble{
 position:fixed;
-bottom:-60px;
-width:22px;
-height:22px;
+bottom:-80px;
 border-radius:50%;
-background:rgba(255,255,255,.4);
-animation:up linear infinite;
+background:rgba(255,255,255,.45);
+animation:floatBubble linear infinite;
 }
-@keyframes up{
-from{transform:translateY(0);opacity:0}
-to{transform:translateY(-120vh);opacity:1}
+@keyframes floatBubble{
+0%{transform:translate(0,0) scale(.5);opacity:0}
+20%{opacity:.6}
+100%{transform:translate(60px,-130vh) scale(1);opacity:0}
 }
 
 /* 🎴 TARJETA */
 .card{
 max-width:420px;
-margin:45px auto;
-background:rgba(255,248,230,.95);
-border-radius:36px;
+margin:50px auto;
+background:rgba(255,248,232,.95);
+border-radius:38px;
 padding:30px;
 text-align:center;
-box-shadow:0 30px 60px rgba(0,0,0,.25);
+box-shadow:0 35px 70px rgba(0,0,0,.25);
 animation:appear 1.4s ease;
 }
 @keyframes appear{
-from{opacity:0;transform:translateY(60px)}
+from{opacity:0;transform:translateY(80px)}
 to{opacity:1;transform:translateY(0)}
-}
-
-/* 🏴‍☠️ BAÚL */
-.chest{
-font-size:130px;
-cursor:pointer;
-animation:float 3s ease-in-out infinite;
-transition:transform 1s,opacity 1s;
-}
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
-}
-.chest.open{
-transform:scale(1.2);
-opacity:.3;
-}
-
-/* ✨ MENSAJE DEL TESORO */
-.treasure-text{
-display:none;
-margin:22px 0;
-font-size:1.15rem;
-line-height:1.5;
-color:#8a5a22;
-animation:fadeIn 1.2s ease;
-}
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
 }
 
 h1{
 font-size:2rem;
-color:#d27b00;
+color:#c87400;
 margin-bottom:6px;
 }
 .subtitle{
 font-size:1.1rem;
 color:#e39a2d;
-margin-bottom:14px;
+margin-bottom:18px;
+}
+
+/* 🏴‍☠️ BAÚL DE MADERA */
+.chest{
+width:220px;
+height:140px;
+margin:0 auto 20px;
+position:relative;
+cursor:pointer;
+}
+.chest-base{
+position:absolute;
+bottom:0;
+width:100%;
+height:80px;
+background:linear-gradient(#8b5a2b,#6b3f1d);
+border-radius:0 0 16px 16px;
+border:4px solid #5a3314;
+}
+.chest-lid{
+position:absolute;
+top:0;
+width:100%;
+height:70px;
+background:linear-gradient(#a86c3a,#7a4a25);
+border-radius:16px 16px 0 0;
+border:4px solid #5a3314;
+transform-origin:bottom center;
+transition:transform 1.8s ease;
+}
+.chest.open .chest-lid{
+transform:rotateX(75deg);
+}
+
+/* ✨ LUZ DEL TESORO */
+.glow{
+position:absolute;
+bottom:60px;
+left:50%;
+transform:translateX(-50%);
+width:160px;
+height:80px;
+background:radial-gradient(circle,#ffd700,transparent 70%);
+opacity:0;
+transition:opacity 1.5s;
+}
+.chest.open .glow{opacity:.8}
+
+/* 📜 TEXTO DEL TESORO */
+.treasure-text{
+max-height:0;
+overflow:hidden;
+opacity:0;
+transition:all 1.8s ease;
+font-size:1.15rem;
+color:#7a4a14;
+}
+.chest.open + .treasure-text{
+max-height:300px;
+opacity:1;
+margin-bottom:18px;
 }
 
 /* ⏳ CUENTA */
@@ -105,7 +149,7 @@ justify-content:space-around;
 margin:18px 0;
 }
 .time{
-background:#ffe1a6;
+background:#ffe2a8;
 padding:10px;
 border-radius:16px;
 min-width:60px;
@@ -138,13 +182,15 @@ color:#7a5323;
 <body>
 
 <div class="sea"></div>
+<div class="net"></div>
 
 <script>
-for(let i=0;i<14;i++){
+for(let i=0;i<22;i++){
 let b=document.createElement("div");
 b.className="bubble";
 b.style.left=Math.random()*100+"%";
-b.style.animationDuration=(10+Math.random()*10)+"s";
+b.style.width=b.style.height=(10+Math.random()*20)+"px";
+b.style.animationDuration=(12+Math.random()*10)+"s";
 document.body.appendChild(b);
 }
 </script>
@@ -153,12 +199,16 @@ document.body.appendChild(b);
 <h1>Un Tesoro por Descubrir</h1>
 <div class="subtitle">Revelación de Género & Baby Shower</div>
 
-<div class="chest" id="chest">🧰</div>
+<div class="chest" id="chest">
+  <div class="chest-lid"></div>
+  <div class="chest-base"></div>
+  <div class="glow"></div>
+</div>
 
-<div class="treasure-text" id="treasure">
+<div class="treasure-text">
 ✨ El tesoro más grande está por llegar…<br>
-pero su secreto aún duerme en el mar 🌊<br><br>
-Muy pronto sabremos si llega una pequeña<br>
+pero su secreto aún descansa en el fondo del mar 🌊<br><br>
+Muy pronto descubriremos si llega una pequeña
 sirenita o un valiente marinerito 💙💖
 </div>
 
@@ -180,16 +230,13 @@ Taxco de Alarcón, Guerrero
 <a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia" target="_blank">💬 Confirmar asistencia</a>
 
 <footer>
-Te esperamos para descubrir este tesoro juntos 🏴‍☠️✨
+Te esperamos para descubrir este tesoro juntos 🏴‍☠️
 </footer>
 </div>
 
 <script>
 document.getElementById("chest").onclick=()=>{
 document.getElementById("chest").classList.add("open");
-setTimeout(()=>{
-document.getElementById("treasure").style.display="block";
-},600);
 };
 
 const eventDate=new Date("2026-02-01T12:30:00").getTime();
