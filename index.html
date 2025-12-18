@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Una invitación muy especial</title>
+<title>Invitación Baby Shower & Revelación</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
 
 body{
   margin:0;
-  background:#000;
+  background:linear-gradient(to top,#0099cc,#00ccff);
   font-family:'Poppins', sans-serif;
   overflow:hidden;
 }
@@ -49,16 +49,9 @@ body{
 .scene{
   position:relative;
   min-height:100vh;
-  background:radial-gradient(circle at top,#fff,var(--arena));
   display:flex;
   justify-content:center;
   align-items:center;
-  animation:sceneIn 3s ease;
-}
-
-@keyframes sceneIn{
-  from{opacity:0; transform:scale(1.1);}
-  to{opacity:1;}
 }
 
 /* OLAS */
@@ -82,26 +75,30 @@ body{
   to{transform:translateX(-50%);}
 }
 
-/* PERSONAJES (ILUSTRACIÓN) */
+/* ANIMALES MARINOS */
 .character{
   position:absolute;
-  width:110px;
+  width:100px;
   animation:float 6s ease-in-out infinite;
-  filter:drop-shadow(0 18px 25px rgba(0,0,0,.35));
+  filter:drop-shadow(0 8px 15px rgba(0,0,0,.25));
 }
 
-.turtle{top:12%; left:-140px; animation:enterLeft 3s forwards;}
-.fish{bottom:18%; right:-140px; animation:enterRight 3s forwards;}
+.turtle{top:15%; left:-150px; animation:enterLeft 3s forwards, float 6s ease-in-out infinite;}
+.fish{bottom:20%; right:-150px; animation:enterRight 3s forwards, float 5s ease-in-out infinite;}
+.jellyfish{top:30%; left:-120px; animation:enterLeft 4s forwards, float 5s ease-in-out infinite;}
+.starfish{bottom:10%; right:-100px; animation:enterRight 5s forwards, float 7s ease-in-out infinite;}
+.crab{bottom:5%; left:-100px; animation:enterLeft 4s forwards, float 6s ease-in-out infinite;}
+.seahorse{top:40%; right:-120px; animation:enterRight 4s forwards, float 6s ease-in-out infinite;}
 
 @keyframes enterLeft{
-  to{left:6%;}
+  to{left:5%;}
 }
 @keyframes enterRight{
-  to{right:6%;}
+  to{right:5%;}
 }
 
 @keyframes float{
-  50%{transform:translateY(-14px);}
+  50%{transform:translateY(-12px);}
 }
 
 /* TARJETA */
@@ -131,11 +128,19 @@ body{
 
 h1{
   font-family:'Playfair Display', serif;
-  font-size:30px;
+  font-size:32px;
   background:linear-gradient(90deg,var(--mar),var(--coral),var(--oro));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   margin-bottom:14px;
+  animation:shine 3s infinite linear;
+  background-size:200% auto;
+}
+
+@keyframes shine{
+  0%{background-position:0%;}
+  50%{background-position:100%;}
+  100%{background-position:0%;}
 }
 
 .phrase{
@@ -152,6 +157,7 @@ h1{
   box-shadow:0 12px 26px rgba(0,0,0,.18);
   margin-bottom:26px;
   color:var(--mar);
+  text-align:center;
 }
 
 /* CONTADOR */
@@ -166,10 +172,16 @@ h1{
   border-radius:20px;
   padding:12px 0;
   box-shadow:0 10px 22px rgba(0,0,0,.2);
+  text-align:center;
 }
 .box strong{
   font-size:22px;
   color:var(--mar);
+  display:inline-block;
+  transition: transform .3s;
+}
+.box strong.change{
+  transform: scale(1.4);
 }
 
 /* BOTONES */
@@ -207,9 +219,13 @@ h1{
   <div class="wave back"></div>
   <div class="wave"></div>
 
-  <!-- IMÁGENES PIXAR -->
+  <!-- ANIMALES MARINOS -->
   <img class="character turtle" src="https://i.imgur.com/9YqQX4N.png">
   <img class="character fish" src="https://i.imgur.com/0XKzn7K.png">
+  <img class="character jellyfish" src="https://i.imgur.com/IOeDq0F.png">
+  <img class="character starfish" src="https://i.imgur.com/fp5A2k1.png">
+  <img class="character crab" src="https://i.imgur.com/N6fQZgE.png">
+  <img class="character seahorse" src="https://i.imgur.com/0I9jvKM.png">
 
   <div class="card">
     <div class="label">BABY SHOWER & REVELACIÓN DE GÉNERO</div>
@@ -244,14 +260,30 @@ h1{
 
 <script>
 const fecha = new Date("February 1, 2026 12:30:00").getTime();
-setInterval(()=>{
+
+function updateCounter() {
   const now = new Date().getTime();
   const diff = fecha - now;
-  d.textContent = Math.floor(diff/(1000*60*60*24));
-  h.textContent = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  m.textContent = Math.floor((diff%(1000*60*60))/(1000*60));
-  s.textContent = Math.floor((diff%(1000*60))/1000);
-},1000);
+
+  const newD = Math.floor(diff/(1000*60*60*24));
+  const newH = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const newM = Math.floor((diff%(1000*60*60))/(1000*60));
+  const newS = Math.floor((diff%(1000*60))/1000);
+
+  const boxes = {d:newD,h:newH,m:newM,s:newS};
+
+  for(let id in boxes){
+    const el = document.getElementById(id);
+    if(el.textContent != boxes[id]){
+      el.textContent = boxes[id].toString().padStart(2,'0');
+      el.classList.add('change');
+      setTimeout(()=> el.classList.remove('change'),300);
+    }
+  }
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
 </script>
 
 </body>
