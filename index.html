@@ -16,45 +16,70 @@
 }
 
 *{box-sizing:border-box;}
+body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#00aaff;}
 
-body{
-  margin:0;
-  background:linear-gradient(to top,#0099cc,#00ccff);
-  font-family:'Poppins', sans-serif;
-  overflow:hidden;
-}
-
-/* INTRO CINEMATOGRÁFICA */
+/* INTRO CON OLAS */
 .intro{
   position:fixed;
   inset:0;
-  background:radial-gradient(circle,#001e26,#000);
   display:flex;
   justify-content:center;
   align-items:center;
   color:white;
-  font-size:22px;
+  font-size:24px;
   letter-spacing:2px;
   z-index:100;
-  animation:introFade 4s forwards;
+  flex-direction:column;
+  overflow:hidden;
 }
 
-@keyframes introFade{
+.intro .text{
+  z-index:101;
+  font-weight:600;
+  text-align:center;
+}
+
+.intro .waves{
+  position:absolute;
+  bottom:0;
+  width:200%;
+  height:200px;
+  background:rgba(255,255,255,0.3);
+  border-radius:50%;
+  animation:waveMoveIntro 6s linear infinite;
+}
+
+.intro .waves.back{
+  bottom:20px;
+  opacity:0.2;
+  animation-duration:10s;
+}
+
+@keyframes waveMoveIntro{
+  to{transform:translateX(-50%);}
+}
+
+.intro.fadeOut{
+  animation:fadeOut 2s forwards;
+}
+
+@keyframes fadeOut{
   0%{opacity:1;}
-  70%{opacity:1;}
-  100%{opacity:0;visibility:hidden;}
+  100%{opacity:0; visibility:hidden;}
 }
 
-/* ESCENA */
+/* ESCENA PRINCIPAL */
 .scene{
   position:relative;
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
+  background:linear-gradient(to top,#00c0ff,#0099cc);
+  overflow:hidden;
 }
 
-/* OLAS */
+/* OLAS PRINCIPALES */
 .wave{
   position:absolute;
   bottom:-80px;
@@ -83,39 +108,47 @@ body{
   filter:drop-shadow(0 8px 15px rgba(0,0,0,.25));
 }
 
-.turtle{top:15%; left:-150px; animation:enterLeft 3s forwards, float 6s ease-in-out infinite;}
-.fish{bottom:20%; right:-150px; animation:enterRight 3s forwards, float 5s ease-in-out infinite;}
-.jellyfish{top:30%; left:-120px; animation:enterLeft 4s forwards, float 5s ease-in-out infinite;}
-.starfish{bottom:10%; right:-100px; animation:enterRight 5s forwards, float 7s ease-in-out infinite;}
-.crab{bottom:5%; left:-100px; animation:enterLeft 4s forwards, float 6s ease-in-out infinite;}
-.seahorse{top:40%; right:-120px; animation:enterRight 4s forwards, float 6s ease-in-out infinite;}
+.turtle{top:15%; left:-150px; animation:enterLeft 3s forwards, float 6s infinite;}
+.fish{bottom:20%; right:-150px; animation:enterRight 3s forwards, float 5s infinite;}
+.jellyfish{top:30%; left:-120px; animation:enterLeft 4s forwards, float 5s infinite;}
+.starfish{bottom:10%; right:-100px; animation:enterRight 5s forwards, float 7s infinite;}
+.crab{bottom:5%; left:-100px; animation:enterLeft 4s forwards, float 6s infinite;}
+.seahorse{top:40%; right:-120px; animation:enterRight 4s forwards, float 6s infinite;}
 
-@keyframes enterLeft{
-  to{left:5%;}
-}
-@keyframes enterRight{
-  to{right:5%;}
-}
+@keyframes enterLeft{to{left:5%;}}
+@keyframes enterRight{to{right:5%;}}
+@keyframes float{50%{transform:translateY(-12px);}}
 
-@keyframes float{
-  50%{transform:translateY(-12px);}
+/* BRILLITOS DORADOS */
+.sparkle{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:gold;
+  border-radius:50%;
+  animation:twinkle 2s infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0;}
+  50%{opacity:1; transform:translateY(-10px);}
 }
 
 /* TARJETA */
 .card{
-  max-width:420px;
+  max-width:440px;
   background:linear-gradient(160deg,#fff,#f7edd6);
   border-radius:42px;
   padding:36px 30px 40px;
   box-shadow:0 50px 100px rgba(0,0,0,.35);
   position:relative;
   z-index:5;
-  animation:cardUp 2s ease;
+  opacity:0;
+  transform:translateY(60px);
+  animation:cardUp 2s forwards;
 }
 
 @keyframes cardUp{
-  from{transform:translateY(60px); opacity:0;}
-  to{opacity:1;}
+  to{opacity:1; transform:translateY(0);}
 }
 
 /* TEXTO */
@@ -124,6 +157,7 @@ body{
   letter-spacing:3px;
   color:var(--coral);
   margin-bottom:12px;
+  text-align:center;
 }
 
 h1{
@@ -135,6 +169,7 @@ h1{
   margin-bottom:14px;
   animation:shine 3s infinite linear;
   background-size:200% auto;
+  text-align:center;
 }
 
 @keyframes shine{
@@ -146,21 +181,20 @@ h1{
 .phrase{
   color:#555;
   font-size:16px;
-  margin-bottom:24px;
+  margin-bottom:16px;
+  text-align:center;
 }
 
-/* FECHA */
 .date{
   background:#fff;
   border-radius:24px;
   padding:18px;
   box-shadow:0 12px 26px rgba(0,0,0,.18);
-  margin-bottom:26px;
+  margin-bottom:16px;
   color:var(--mar);
   text-align:center;
 }
 
-/* CONTADOR */
 .counter{
   display:flex;
   justify-content:space-between;
@@ -184,11 +218,10 @@ h1{
   transform: scale(1.4);
 }
 
-/* BOTONES */
 .actions{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:12px;
 }
 .actions a{
   padding:16px;
@@ -208,13 +241,15 @@ h1{
 
 <body>
 
-<div class="intro">UNA NUEVA HISTORIA ESTÁ POR COMENZAR…</div>
+<!-- INTRO CON OLAS -->
+<div class="intro" id="intro">
+  <div class="text">UNA NUEVA HISTORIA ESTÁ POR COMENZAR…</div>
+  <div class="waves"></div>
+  <div class="waves back"></div>
+</div>
 
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9d55e7c43b.mp3">
-</audio>
-
-<div class="scene">
+<!-- ESCENA PRINCIPAL -->
+<div class="scene" id="scene">
 
   <div class="wave back"></div>
   <div class="wave"></div>
@@ -227,6 +262,7 @@ h1{
   <img class="character crab" src="https://i.imgur.com/N6fQZgE.png">
   <img class="character seahorse" src="https://i.imgur.com/0I9jvKM.png">
 
+  <!-- TARJETA -->
   <div class="card">
     <div class="label">BABY SHOWER & REVELACIÓN DE GÉNERO</div>
 
@@ -237,6 +273,8 @@ h1{
       esperamos con amor hasta encontrar<br>
       <strong>nuestro tesoro más especial.</strong>
     </p>
+
+    <p class="phrase"><em>Acompáñanos a descubrir si es una sirenita o un tritón 🌊🧜‍♀️🧜‍♂️</em></p>
 
     <div class="date">
       Domingo 1 de febrero de 2026<br>
@@ -255,23 +293,23 @@ h1{
       <a class="whatsapp" href="https://wa.me/5217621090026?text=Hola,%20confirmo%20mi%20asistencia%20🌊" target="_blank">💬 Confirmar asistencia</a>
     </div>
   </div>
-
 </div>
 
-<script>
-const fecha = new Date("February 1, 2026 12:30:00").getTime();
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9d55e7c43b.mp3">
+</audio>
 
+<script>
+// CONTADOR
+const fecha = new Date("February 1, 2026 12:30:00").getTime();
 function updateCounter() {
   const now = new Date().getTime();
   const diff = fecha - now;
-
   const newD = Math.floor(diff/(1000*60*60*24));
   const newH = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
   const newM = Math.floor((diff%(1000*60*60))/(1000*60));
   const newS = Math.floor((diff%(1000*60))/1000);
-
   const boxes = {d:newD,h:newH,m:newM,s:newS};
-
   for(let id in boxes){
     const el = document.getElementById(id);
     if(el.textContent != boxes[id]){
@@ -281,9 +319,24 @@ function updateCounter() {
     }
   }
 }
-
 setInterval(updateCounter,1000);
 updateCounter();
+
+// TRANSICIÓN INTRO
+setTimeout(()=>{
+  const intro = document.getElementById('intro');
+  intro.classList.add('fadeOut');
+
+  // BRILLITOS DORADOS
+  for(let i=0;i<30;i++){
+    const spark = document.createElement('div');
+    spark.classList.add('sparkle');
+    spark.style.left = Math.random()*100+'%';
+    spark.style.top = Math.random()*100+'%';
+    spark.style.animationDuration = (1+Math.random()*2)+'s';
+    document.body.appendChild(spark);
+  }
+},4000);
 </script>
 
 </body>
