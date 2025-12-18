@@ -1,34 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Baby Shower & Revelación de Género</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Baby Shower & Revelación de Género</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  background:#0bbcd6;
+  display:flex;
+  justify-content:center;
+  font-family:Arial, sans-serif;
+}
+
+.container{
+  max-width:420px;
+  width:100%;
+  text-align:center;
+  animation:fadeIn 1.5s ease;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+.countdown{
+  display:flex;
+  justify-content:space-around;
+  background:rgba(255,255,255,0.9);
+  margin:10px;
+  padding:10px;
+  border-radius:15px;
+  animation:bounce 2s infinite;
+}
+
+.countdown div span{
+  font-size:22px;
+  font-weight:bold;
+  display:block;
+}
+
+.buttons{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:15px;
+}
+
+.buttons a{
+  padding:14px;
+  border-radius:30px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  animation:pulse 1.5s infinite;
+}
+
+.map{ background:#ff8ab4; }
+.whatsapp{ background:#4caf50; }
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+  100%{transform:scale(1);}
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+</style>
 </head>
+
 <body>
-
 <div class="container">
-  <img src="invitacion.png" alt="Invitación Baby Shower" class="invitation">
 
+  <!-- IMAGEN -->
+  <img src="invitacion.png" alt="Invitación Baby Shower">
+
+  <!-- CONTADOR -->
   <div class="countdown">
-    <div><span id="days">00</span><small>Días</small></div>
-    <div><span id="hours">00</span><small>Horas</small></div>
-    <div><span id="minutes">00</span><small>Min</small></div>
-    <div><span id="seconds">00</span><small>Seg</small></div>
+    <div><span id="d">00</span>Días</div>
+    <div><span id="h">00</span>Horas</div>
+    <div><span id="m">00</span>Min</div>
+    <div><span id="s">00</span>Seg</div>
   </div>
 
+  <!-- BOTONES -->
   <div class="buttons">
-    <a href="https://maps.google.com/?q=Salón+de+Eventos+Huiyatengo+Taxco" target="_blank">
+    <a class="map" href="https://maps.google.com/?q=Salón+de+Eventos+Huiyatengo+Taxco" target="_blank">
       📍 Ver ubicación
     </a>
 
-    <a href="https://wa.me/7621090026 text=Hola,%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20💙💗" target="_blank">
+    <a class="whatsapp" href="https://wa.me/521XXXXXXXXXX?text=Hola,%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20💙💗" target="_blank">
       💬 Confirmar asistencia
     </a>
   </div>
+
 </div>
 
-<script src="script.js"></script>
+<script>
+const fecha = new Date("February 1, 2026 12:30:00").getTime();
+
+setInterval(()=>{
+  const ahora = new Date().getTime();
+  const dif = fecha - ahora;
+
+  document.getElementById("d").innerHTML = Math.floor(dif/(1000*60*60*24));
+  document.getElementById("h").innerHTML = Math.floor((dif%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("m").innerHTML = Math.floor((dif%(1000*60*60))/(1000*60));
+  document.getElementById("s").innerHTML = Math.floor((dif%(1000*60))/1000);
+},1000);
+</script>
+
 </body>
 </html>
