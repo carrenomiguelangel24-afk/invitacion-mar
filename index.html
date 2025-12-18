@@ -2,81 +2,38 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Mensaje del Mar</title>
+<title>Un Tesoro por Descubrir</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 body{
 margin:0;
 font-family:'Baloo 2',cursive;
-background:linear-gradient(to bottom,#fff4d6,#f3e1b2);
-color:#6b4a1e;
-overflow:hidden;
+background:linear-gradient(to bottom,#fff4db,#f1ddb0);
+color:#5b3a14;
+overflow-x:hidden;
 }
 
-/* 🌊 MAR */
+/* 🌊 FONDO MAR + ARENA */
 .sea{
 position:fixed;
 inset:0;
 background:
 radial-gradient(circle at top,#ffffff,transparent 60%),
-linear-gradient(to bottom,#fff4db,#e7d3a1);
-z-index:-5;
+linear-gradient(to bottom,#fff7e2,#e7cf9a);
+z-index:-10;
 }
 
-/* 🍾 BOTELLA */
-.bottle{
-position:fixed;
-left:50%;
-top:60%;
-transform:translate(-50%,-50%);
-font-size:120px;
-cursor:pointer;
-animation:float 3s ease-in-out infinite;
-}
-@keyframes float{
-0%,100%{transform:translate(-50%,-50%) translateY(0)}
-50%{transform:translate(-50%,-50%) translateY(-18px)}
-}
-.bottle.hide{
-opacity:0;
-transform:scale(.3);
-transition:1s;
-}
-
-/* 🦀 CANGREJO */
-.crab{
-position:fixed;
-font-size:44px;
-bottom:60px;
-animation:crabWalk 14s linear infinite;
-}
-@keyframes crabWalk{
-from{transform:translateX(-80px)}
-to{transform:translateX(110vw)}
-}
-
-/* ⭐ ESTRELLAS DE MAR */
-.star{
-position:fixed;
-font-size:48px;
-animation:starFloat 7s ease-in-out infinite;
-}
-@keyframes starFloat{
-0%,100{transform:translateY(0)}
-50%{transform:translateY(-20px)}
-}
-
-/* 🫧 BURBUJAS */
-.bubble-bg{
+/* 🫧 BURBUJAS AMBIENTE */
+.bubble{
 position:fixed;
 bottom:-60px;
-width:26px;
-height:26px;
+width:22px;
+height:22px;
 border-radius:50%;
-background:rgba(255,255,255,.55);
+background:rgba(255,255,255,.4);
 animation:up linear infinite;
 }
 @keyframes up{
@@ -87,74 +44,94 @@ to{transform:translateY(-120vh);opacity:1}
 /* 🎴 TARJETA */
 .card{
 max-width:420px;
-margin:40px auto;
-background:rgba(255,245,220,.96);
-border-radius:38px;
+margin:45px auto;
+background:rgba(255,248,230,.95);
+border-radius:36px;
 padding:30px;
 text-align:center;
-box-shadow:0 30px 60px rgba(0,0,0,.3);
-display:none;
-animation:appear 1.2s ease;
+box-shadow:0 30px 60px rgba(0,0,0,.25);
+animation:appear 1.4s ease;
 }
 @keyframes appear{
-from{opacity:0;transform:translateY(80px)}
+from{opacity:0;transform:translateY(60px)}
 to{opacity:1;transform:translateY(0)}
 }
 
-/* 🫧 BURBUJA REVELACIÓN */
-.reveal{
-margin:24px auto;
-width:210px;
-height:210px;
-border-radius:50%;
-background:radial-gradient(circle at top,#fff,#bdf0ff);
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:800;
-color:#ff6f61;
+/* 🏴‍☠️ BAÚL */
+.chest{
+font-size:130px;
 cursor:pointer;
-animation:wave 3s ease-in-out infinite;
-box-shadow:0 0 35px rgba(255,255,255,.9);
-position:relative;
-overflow:hidden;
+animation:float 3s ease-in-out infinite;
+transition:transform 1s,opacity 1s;
 }
-@keyframes wave{
-0%,100{transform:scale(1)}
-50%{transform:scale(1.07)}
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
 }
-.reveal::after{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle,rgba(255,255,255,.9),transparent 60%);
-opacity:.5;
-}
-.reveal.pop{
-animation:none;
-transform:scale(1.4);
-opacity:0;
-transition:.9s;
+.chest.open{
+transform:scale(1.2);
+opacity:.3;
 }
 
-/* TEXTOS */
-h1{color:#ff7a18;font-size:2rem}
-.subtitle{color:#ff9f45}
+/* ✨ MENSAJE DEL TESORO */
+.treasure-text{
+display:none;
+margin:22px 0;
+font-size:1.15rem;
+line-height:1.5;
+color:#8a5a22;
+animation:fadeIn 1.2s ease;
+}
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
 
-/* BOTONES */
+h1{
+font-size:2rem;
+color:#d27b00;
+margin-bottom:6px;
+}
+.subtitle{
+font-size:1.1rem;
+color:#e39a2d;
+margin-bottom:14px;
+}
+
+/* ⏳ CUENTA */
+.countdown{
+display:flex;
+justify-content:space-around;
+margin:18px 0;
+}
+.time{
+background:#ffe1a6;
+padding:10px;
+border-radius:16px;
+min-width:60px;
+font-weight:700;
+}
+
+/* 🔘 BOTONES */
 .btn{
 display:block;
 margin:14px auto;
 padding:14px;
 border-radius:30px;
-color:white;
 text-decoration:none;
 font-weight:800;
+color:white;
+transition:.3s;
 }
-.maps{background:#ff9f45}
+.btn:hover{transform:scale(1.08)}
+.maps{background:#e39a2d}
 .wa{background:#25d366}
 
-footer{margin-top:14px}
+footer{
+font-size:.9rem;
+margin-top:16px;
+color:#7a5323;
+}
 </style>
 </head>
 
@@ -162,43 +139,28 @@ footer{margin-top:14px}
 
 <div class="sea"></div>
 
-<div class="bottle" id="bottle">🍾</div>
-
 <script>
-/* burbujas */
-for(let i=0;i<18;i++){
+for(let i=0;i<14;i++){
 let b=document.createElement("div");
-b.className="bubble-bg";
+b.className="bubble";
 b.style.left=Math.random()*100+"%";
-b.style.animationDuration=(8+Math.random()*10)+"s";
+b.style.animationDuration=(10+Math.random()*10)+"s";
 document.body.appendChild(b);
 }
-
-/* estrellas de mar rosas */
-for(let i=0;i<6;i++){
-let s=document.createElement("div");
-s.className="star";
-s.innerHTML="🌸⭐";
-s.style.left=Math.random()*100+"%";
-s.style.top=Math.random()*80+"%";
-document.body.appendChild(s);
-}
-
-/* cangrejo */
-let c=document.createElement("div");
-c.className="crab";
-c.innerHTML="🦀";
-document.body.appendChild(c);
 </script>
 
-<div class="card" id="card">
-<h1>¡Fiesta en la Playa!</h1>
-<div class="subtitle">Revelación & Baby Shower</div>
+<div class="card">
+<h1>Un Tesoro por Descubrir</h1>
+<div class="subtitle">Revelación de Género & Baby Shower</div>
 
-<p>
-Prepárate para descubrir un mensaje mágico<br>
-que llegó desde el fondo del mar 🌊
-</p>
+<div class="chest" id="chest">🧰</div>
+
+<div class="treasure-text" id="treasure">
+✨ El tesoro más grande está por llegar…<br>
+pero su secreto aún duerme en el mar 🌊<br><br>
+Muy pronto sabremos si llega una pequeña<br>
+sirenita o un valiente marinerito 💙💖
+</div>
 
 <p>
 📅 <strong>1 de febrero de 2026</strong><br>
@@ -207,34 +169,38 @@ que llegó desde el fondo del mar 🌊
 Taxco de Alarcón, Guerrero
 </p>
 
-<div class="reveal" id="bubble">
-¡Toca la burbuja! 🫧
+<div class="countdown">
+<div class="time"><span id="d"></span><br>Días</div>
+<div class="time"><span id="h"></span><br>Horas</div>
+<div class="time"><span id="m"></span><br>Min</div>
+<div class="time"><span id="s"></span><br>Seg</div>
 </div>
 
-<a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">📍 Ver mapa</a>
-<a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia" target="_blank">💬 Confirmar</a>
+<a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">📍 Ver ubicación</a>
+<a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia" target="_blank">💬 Confirmar asistencia</a>
 
 <footer>
-¡Diversión, juegos y sorpresas te esperan! 🦀🌸
+Te esperamos para descubrir este tesoro juntos 🏴‍☠️✨
 </footer>
 </div>
 
 <script>
-document.getElementById("bottle").onclick=()=>{
-document.getElementById("bottle").classList.add("hide");
+document.getElementById("chest").onclick=()=>{
+document.getElementById("chest").classList.add("open");
 setTimeout(()=>{
-document.getElementById("card").style.display="block";
-},900);
+document.getElementById("treasure").style.display="block";
+},600);
 };
 
-document.getElementById("bubble").onclick=()=>{
-const b=document.getElementById("bubble");
-b.classList.add("pop");
-setTimeout(()=>{
-b.innerHTML="✨ Muy pronto lo sabremos ✨";
-b.classList.remove("pop");
-},900);
-};
+const eventDate=new Date("2026-02-01T12:30:00").getTime();
+setInterval(()=>{
+const n=new Date().getTime();
+const d=eventDate-n;
+document.getElementById("d").innerHTML=Math.floor(d/(1000*60*60*24));
+document.getElementById("h").innerHTML=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+document.getElementById("m").innerHTML=Math.floor((d%(1000*60*60))/(1000*60));
+document.getElementById("s").innerHTML=Math.floor((d%(1000*60))/1000);
+},1000);
 </script>
 
 </body>
