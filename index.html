@@ -2,252 +2,230 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Fiesta en la Playa</title>
+<title>Mensaje del Mar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 body{
 margin:0;
 font-family:'Baloo 2',cursive;
-background:linear-gradient(to bottom,#ffe8b6,#fff4db 60%,#e7d3a1);
+background:linear-gradient(to bottom,#fff4d6,#f3e1b2);
 color:#6b4a1e;
-overflow-x:hidden;
+overflow:hidden;
 }
 
-/* 🌴 ARENA */
-.beach{
+/* 🌊 MAR */
+.sea{
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at top,#fff6d6,transparent 60%),
+radial-gradient(circle at top,#ffffff,transparent 60%),
 linear-gradient(to bottom,#fff4db,#e7d3a1);
-z-index:-10;
+z-index:-5;
 }
 
-/* 🫧 BURBUJAS SUAVES */
-.bubble{
+/* 🍾 BOTELLA */
+.bottle{
 position:fixed;
-bottom:-60px;
-width:30px;
-height:30px;
-border-radius:50%;
-background:rgba(255,255,255,.6);
-animation:floatUp linear infinite;
+left:50%;
+top:60%;
+transform:translate(-50%,-50%);
+font-size:120px;
+cursor:pointer;
+animation:float 3s ease-in-out infinite;
 }
-@keyframes floatUp{
-from{transform:translateY(0) scale(.6);opacity:0}
-to{transform:translateY(-120vh) scale(1);opacity:1}
+@keyframes float{
+0%,100%{transform:translate(-50%,-50%) translateY(0)}
+50%{transform:translate(-50%,-50%) translateY(-18px)}
 }
-
-/* ⭐ ESTRELLAS */
-.star{
-position:fixed;
-font-size:26px;
-animation:starFloat 8s ease-in-out infinite;
-}
-@keyframes starFloat{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-18px)}
+.bottle.hide{
+opacity:0;
+transform:scale(.3);
+transition:1s;
 }
 
 /* 🦀 CANGREJO */
 .crab{
 position:fixed;
-font-size:42px;
-bottom:80px;
-animation:crabWalk 12s linear infinite;
+font-size:44px;
+bottom:60px;
+animation:crabWalk 14s linear infinite;
 }
 @keyframes crabWalk{
-from{transform:translateX(-60px)}
+from{transform:translateX(-80px)}
 to{transform:translateX(110vw)}
 }
 
-/* 🎣 REDES */
-.net{
-position:absolute;
-top:0;
-left:0;
-right:0;
-height:120px;
-background:
-repeating-linear-gradient(45deg,
-rgba(160,120,60,.3) 0 2px,
-transparent 2px 12px),
-repeating-linear-gradient(-45deg,
-rgba(160,120,60,.3) 0 2px,
-transparent 2px 12px);
-opacity:.35;
+/* ⭐ ESTRELLAS DE MAR */
+.star{
+position:fixed;
+font-size:48px;
+animation:starFloat 7s ease-in-out infinite;
+}
+@keyframes starFloat{
+0%,100{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+}
+
+/* 🫧 BURBUJAS */
+.bubble-bg{
+position:fixed;
+bottom:-60px;
+width:26px;
+height:26px;
+border-radius:50%;
+background:rgba(255,255,255,.55);
+animation:up linear infinite;
+}
+@keyframes up{
+from{transform:translateY(0);opacity:0}
+to{transform:translateY(-120vh);opacity:1}
 }
 
 /* 🎴 TARJETA */
 .card{
 max-width:420px;
 margin:40px auto;
-background:rgba(255,245,220,.92);
-border-radius:36px;
+background:rgba(255,245,220,.96);
+border-radius:38px;
 padding:30px;
 text-align:center;
-box-shadow:0 25px 50px rgba(0,0,0,.25);
+box-shadow:0 30px 60px rgba(0,0,0,.3);
+display:none;
 animation:appear 1.2s ease;
 }
 @keyframes appear{
-from{opacity:0;transform:translateY(60px)}
+from{opacity:0;transform:translateY(80px)}
 to{opacity:1;transform:translateY(0)}
-}
-
-h1{
-font-size:2rem;
-color:#ff7a18;
-margin-bottom:6px;
-}
-.subtitle{
-font-size:1.1rem;
-color:#ff9f45;
-margin-bottom:14px;
-}
-
-.section{
-margin:14px 0;
-font-size:1.05rem;
 }
 
 /* 🫧 BURBUJA REVELACIÓN */
 .reveal{
 margin:24px auto;
-width:200px;
-height:200px;
+width:210px;
+height:210px;
 border-radius:50%;
-background:radial-gradient(circle at top,#ffffff,#b9ecff);
+background:radial-gradient(circle at top,#fff,#bdf0ff);
 display:flex;
 align-items:center;
 justify-content:center;
+font-weight:800;
 color:#ff6f61;
-font-weight:700;
-font-size:1.05rem;
 cursor:pointer;
 animation:wave 3s ease-in-out infinite;
-box-shadow:0 0 30px rgba(255,255,255,.9);
+box-shadow:0 0 35px rgba(255,255,255,.9);
+position:relative;
+overflow:hidden;
 }
 @keyframes wave{
-0%,100%{transform:scale(1)}
-50%{transform:scale(1.05)}
+0%,100{transform:scale(1)}
+50%{transform:scale(1.07)}
+}
+.reveal::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle,rgba(255,255,255,.9),transparent 60%);
+opacity:.5;
 }
 .reveal.pop{
 animation:none;
-transform:scale(1.6);
+transform:scale(1.4);
 opacity:0;
-transition:.7s;
+transition:.9s;
 }
 
-/* ⏳ CUENTA */
-.countdown{
-display:flex;
-justify-content:space-around;
-margin:18px 0;
-}
-.time{
-background:#ffdca8;
-padding:10px;
-border-radius:16px;
-min-width:60px;
-}
+/* TEXTOS */
+h1{color:#ff7a18;font-size:2rem}
+.subtitle{color:#ff9f45}
 
-/* 🔘 BOTONES */
+/* BOTONES */
 .btn{
 display:block;
 margin:14px auto;
 padding:14px;
 border-radius:30px;
-text-decoration:none;
-font-weight:700;
 color:white;
+text-decoration:none;
+font-weight:800;
 }
 .maps{background:#ff9f45}
 .wa{background:#25d366}
 
-footer{
-font-size:.9rem;
-margin-top:16px;
-}
+footer{margin-top:14px}
 </style>
 </head>
 
 <body>
 
-<div class="beach"></div>
+<div class="sea"></div>
+
+<div class="bottle" id="bottle">🍾</div>
 
 <script>
-for(let i=0;i<20;i++){
+/* burbujas */
+for(let i=0;i<18;i++){
 let b=document.createElement("div");
-b.className="bubble";
+b.className="bubble-bg";
 b.style.left=Math.random()*100+"%";
-b.style.animationDuration=(10+Math.random()*10)+"s";
+b.style.animationDuration=(8+Math.random()*10)+"s";
 document.body.appendChild(b);
 }
+
+/* estrellas de mar rosas */
 for(let i=0;i<6;i++){
 let s=document.createElement("div");
 s.className="star";
-s.innerHTML="⭐";
+s.innerHTML="🌸⭐";
 s.style.left=Math.random()*100+"%";
 s.style.top=Math.random()*80+"%";
 document.body.appendChild(s);
 }
+
+/* cangrejo */
 let c=document.createElement("div");
 c.className="crab";
 c.innerHTML="🦀";
 document.body.appendChild(c);
 </script>
 
-<div class="card">
-<div class="net"></div>
-
+<div class="card" id="card">
 <h1>¡Fiesta en la Playa!</h1>
 <div class="subtitle">Revelación & Baby Shower</div>
 
-<div class="section">
-Prepárate para una aventura llena de risas,<br>
-juegos y mucha diversión 🐢🌴
-</div>
+<p>
+Prepárate para descubrir un mensaje mágico<br>
+que llegó desde el fondo del mar 🌊
+</p>
 
-<div class="section">
+<p>
 📅 <strong>1 de febrero de 2026</strong><br>
 ⏰ <strong>12:30 p.m.</strong><br>
 📍 <strong>Salón Huiyatengo</strong><br>
 Taxco de Alarcón, Guerrero
-</div>
+</p>
 
 <div class="reveal" id="bubble">
-¡Toca la burbuja!<br>
-🫧✨
-</div>
-
-<div class="countdown">
-<div class="time"><span id="d"></span><br>Días</div>
-<div class="time"><span id="h"></span><br>Horas</div>
-<div class="time"><span id="m"></span><br>Min</div>
-<div class="time"><span id="s"></span><br>Seg</div>
+¡Toca la burbuja! 🫧
 </div>
 
 <a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">📍 Ver mapa</a>
 <a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia" target="_blank">💬 Confirmar</a>
 
 <footer>
-¡Te esperamos para jugar y celebrar juntos! 🦀⭐
+¡Diversión, juegos y sorpresas te esperan! 🦀🌸
 </footer>
 </div>
 
 <script>
-const eventDate=new Date("2026-02-01T12:30:00").getTime();
-setInterval(()=>{
-const n=new Date().getTime();
-const d=eventDate-n;
-document.getElementById("d").innerHTML=Math.floor(d/(1000*60*60*24));
-document.getElementById("h").innerHTML=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-document.getElementById("m").innerHTML=Math.floor((d%(1000*60*60))/(1000*60));
-document.getElementById("s").innerHTML=Math.floor((d%(1000*60))/1000);
-},1000);
+document.getElementById("bottle").onclick=()=>{
+document.getElementById("bottle").classList.add("hide");
+setTimeout(()=>{
+document.getElementById("card").style.display="block";
+},900);
+};
 
 document.getElementById("bubble").onclick=()=>{
 const b=document.getElementById("bubble");
@@ -255,7 +233,7 @@ b.classList.add("pop");
 setTimeout(()=>{
 b.innerHTML="✨ Muy pronto lo sabremos ✨";
 b.classList.remove("pop");
-},700);
+},900);
 };
 </script>
 
