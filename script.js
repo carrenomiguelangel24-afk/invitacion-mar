@@ -1,23 +1,20 @@
-// Cangrejos caminando suavemente
-const crabs = document.querySelectorAll('.crab');
-crabs.forEach((crab) => {
-  let direction = 1;
-  setInterval(() => {
-    let current = parseFloat(getComputedStyle(crab).left);
-    if(current > 80) direction = -1;
-    if(current < 5) direction = 1;
-    crab.style.left = current + direction * 0.2 + '%';
-  }, 50);
-});
+const eventDate = new Date("February 1, 2026 12:30:00").getTime();
 
-// Peces nadando
-const fish = document.querySelectorAll('.fish');
-fish.forEach((f) => {
-  let direction = 1;
-  setInterval(() => {
-    let current = parseFloat(getComputedStyle(f).left);
-    if(current > 90) direction = -1;
-    if(current < 10) direction = 1;
-    f.style.left = current + direction * 0.3 + '%';
-  }, 50);
-});
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  if (distance < 0) return;
+
+  document.getElementById("days").innerText =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  document.getElementById("hours").innerText =
+    Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  document.getElementById("minutes").innerText =
+    Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.getElementById("seconds").innerText =
+    Math.floor((distance % (1000 * 60)) / 1000);
+}, 1000);
