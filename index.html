@@ -5,7 +5,8 @@
 <title>Invitación Baby Shower & Revelación</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fuentes caricaturescas -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Fredoka+One&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -16,11 +17,20 @@
 }
 
 *{box-sizing:border-box;}
-body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#00aaff;}
+body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background:#00aaff;}
 
-/* ========================== */
+/* RED MARINA */
+.net {
+  position:absolute;
+  top:0;
+  width:100%;
+  height:150px;
+  background: url('https://i.imgur.com/Kj4rFcz.png') no-repeat top center;
+  background-size: cover;
+  z-index:4;
+}
+
 /* INTRO ANIMADA CON OLAS */
-/* ========================== */
 .intro{
   position:fixed;
   inset:0;
@@ -40,13 +50,14 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   z-index:101;
   font-weight:700;
   text-align:center;
-  font-size:28px;
+  font-family:'Fredoka One', cursive;
+  font-size:32px;
   animation:textPop 2s ease forwards;
 }
 
 @keyframes textPop{
   0%{opacity:0; transform:scale(0.8);}
-  50%{opacity:1; transform:scale(1.1);}
+  50%{opacity:1; transform:scale(1.2);}
   100%{opacity:1; transform:scale(1);}
 }
 
@@ -79,9 +90,7 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   100%{opacity:0; visibility:hidden;}
 }
 
-/* ========================== */
 /* ESCENA PRINCIPAL */
-/* ========================== */
 .scene{
   position:relative;
   min-height:100vh;
@@ -113,9 +122,7 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   to{transform:translateX(-50%);}
 }
 
-/* ========================== */
-/* BURBUJAS ALEATORIAS */
-/* ========================== */
+/* BURBUJAS */
 .bubble{
   position:absolute;
   border-radius:50%;
@@ -128,9 +135,7 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   100%{transform:translateY(-50px) scale(1);}
 }
 
-/* ========================== */
-/* ANIMALES MARINOS CON MOVIMIENTO ALEATORIO */
-/* ========================== */
+/* ANIMALES MARINOS */
 .character{
   position:absolute;
   filter:drop-shadow(0 8px 15px rgba(0,0,0,.25));
@@ -139,13 +144,10 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
 
 @keyframes floatAnim{
   0%{transform:translateY(0);}
-  50%{transform:translateY(-20px);}
+  50%{transform:translateY(-15px);}
   100%{transform:translateY(0);}
 }
 
-/* -------------------------- */
-/* PERSONAJES INFANTILES */
-/* -------------------------- */
 .turtle{width:90px;}
 .fish{width:90px;}
 .jellyfish{width:80px;}
@@ -153,11 +155,8 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
 .starfish{width:60px;}
 .seahorse{width:70px;}
 .octopus{width:80px;}
-.seaweed{width:100px;}
 
-/* ========================== */
 /* BRILLITOS DORADOS */
-/* ========================== */
 .sparkle{
   position:absolute;
   width:8px;
@@ -171,9 +170,7 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   50%{opacity:1; transform:translateY(-10px);}
 }
 
-/* ========================== */
 /* TARJETA PRINCIPAL */
-/* ========================== */
 .card{
   max-width:460px;
   background:linear-gradient(160deg,#fff,#f7edd6);
@@ -185,6 +182,7 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
   opacity:0;
   transform:translateY(60px);
   animation:cardUp 2s forwards;
+  font-family:'Fredoka One', cursive;
 }
 
 @keyframes cardUp{
@@ -192,16 +190,15 @@ body{margin:0; font-family:'Poppins', sans-serif; overflow:hidden; background:#0
 }
 
 .label{
-  font-size:14px;
-  letter-spacing:3px;
+  font-size:16px;
+  letter-spacing:2px;
   color:var(--coral);
   margin-bottom:12px;
   text-align:center;
 }
 
 h1{
-  font-family:'Playfair Display', serif;
-  font-size:34px;
+  font-size:36px;
   background:linear-gradient(90deg,var(--mar),var(--coral),var(--oro));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -211,15 +208,9 @@ h1{
   text-align:center;
 }
 
-@keyframes shine{
-  0%{background-position:0%;}
-  50%{background-position:100%;}
-  100%{background-position:0%;}
-}
-
 .phrase{
   color:#555;
-  font-size:16px;
+  font-size:18px;
   margin-bottom:16px;
   text-align:center;
 }
@@ -232,8 +223,11 @@ h1{
   margin-bottom:16px;
   color:var(--mar);
   text-align:center;
+  font-family:'Fredoka One', cursive;
+  font-size:20px;
 }
 
+/* CONTADOR */
 .counter{
   display:flex;
   justify-content:space-between;
@@ -248,15 +242,17 @@ h1{
   text-align:center;
 }
 .box strong{
-  font-size:22px;
+  font-size:26px;
   color:var(--mar);
   display:inline-block;
+  font-family:'Fredoka One', cursive;
   transition: transform .3s;
 }
 .box strong.change{
   transform: scale(1.4);
 }
 
+/* BOTONES */
 .actions{
   display:flex;
   flex-direction:column;
@@ -279,7 +275,10 @@ h1{
 </head>
 <body>
 
-<!-- INTRO ANIMADA -->
+<!-- RED MARINA ARRIBA -->
+<div class="net"></div>
+
+<!-- INTRO -->
 <div class="intro" id="intro">
   <div class="text">UNA NUEVA HISTORIA ESTÁ POR COMENZAR…</div>
   <div class="waves"></div>
@@ -294,7 +293,7 @@ h1{
   <!-- BURBUJAS -->
   <div id="bubbles"></div>
 
-  <!-- ANIMALES MARINOS INFANTILES -->
+  <!-- ANIMALES MARINOS -->
   <img class="character turtle" src="https://i.imgur.com/9YqQX4N.png">
   <img class="character fish" src="https://i.imgur.com/0XKzn7K.png">
   <img class="character jellyfish" src="https://i.imgur.com/IOeDq0F.png">
@@ -368,7 +367,7 @@ setTimeout(()=>{
   const intro = document.getElementById('intro');
   intro.classList.add('fadeOut');
 
-  // CREAR BRILLITOS DORADOS
+  // BRILLITOS DORADOS
   for(let i=0;i<50;i++){
     const spark = document.createElement('div');
     spark.classList.add('sparkle');
@@ -378,7 +377,7 @@ setTimeout(()=>{
     document.body.appendChild(spark);
   }
 
-  // CREAR BURBUJAS ALEATORIAS
+  // BURBUJAS ALEATORIAS
   const bubblesContainer = document.getElementById('bubbles');
   for(let i=0;i<30;i++){
     const bubble = document.createElement('div');
