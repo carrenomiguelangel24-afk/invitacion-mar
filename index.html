@@ -11,73 +11,16 @@ body, html {
   padding: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   overflow-x: hidden;
+  background: #f4e2b1; /* Fondo color arena */
   color: #fff;
-}
-
-/* Fondo mar y arena */
-.background {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0; left: 0;
-  z-index: -2;
-}
-.ocean {
-  width: 100%;
-  height: 80%;
-  background: linear-gradient(to bottom, #3a7bd5, #00d2ff);
-}
-.sand {
-  width: 100%;
-  height: 20%;
-  background: #f4e2b1; /* color arena */
-}
-
-/* Burbujas animadas */
-.bubble {
-  position: absolute;
-  bottom: -50px;
-  width: 15px; height: 15px;
-  background: rgba(255,255,255,0.5);
-  border-radius: 50%;
-  animation: rise 10s infinite ease-in;
-}
-.bubble1 { left: 10%; animation-duration: 12s; }
-.bubble2 { left: 30%; animation-duration: 14s; }
-.bubble3 { left: 50%; animation-duration: 10s; }
-.bubble4 { left: 70%; animation-duration: 16s; }
-.bubble5 { left: 90%; animation-duration: 13s; }
-
-@keyframes rise {
-  0% { bottom: -50px; transform: scale(0.5); opacity: 0.5; }
-  50% { transform: scale(1); opacity: 1; }
-  100% { bottom: 100%; transform: scale(0.5); opacity: 0; }
-}
-
-/* Personajes animados */
-.crab, .star, .fish {
-  position: absolute;
-  width: 50px;
-  animation: float 5s infinite alternate ease-in-out;
-}
-.crab1 { left: 5%; bottom: 10%; animation-delay: 0s; }
-.crab2 { left: 80%; bottom: 15%; animation-delay: 2s; }
-.star1 { left: 25%; bottom: 20%; animation-delay: 1s; }
-.star2 { left: 60%; bottom: 25%; animation-delay: 3s; }
-.fish1 { left: 15%; bottom: 50%; animation-delay: 0.5s; }
-.fish2 { left: 75%; bottom: 40%; animation-delay: 1.5s; }
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-20px); }
 }
 
 /* Sección principal */
 .cinematic {
   text-align: center;
-  padding: 100px 20px;
-  z-index: 1;
+  padding: 50px 20px;
   position: relative;
+  z-index: 2;
 }
 
 /* Animaciones de texto */
@@ -99,7 +42,7 @@ body, html {
 
 /* Botones */
 .buttons {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .buttons a {
   text-decoration: none;
@@ -116,15 +59,67 @@ body, html {
   background: #ff1493;
   transform: translateY(-5px);
 }
+
+/* Personajes animados */
+.character {
+  position: absolute;
+  width: 60px;
+  animation: float 4s infinite alternate ease-in-out;
+  z-index: 1;
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+/* Redes y medusas */
+.net {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: url('red.png') no-repeat center center;
+  background-size: contain;
+  top: 10%;
+  left: 10%;
+  animation: netMove 6s infinite alternate ease-in-out;
+}
+@keyframes netMove {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(15deg); }
+}
+
+/* Burbujas animadas */
+.bubble {
+  position: absolute;
+  bottom: -30px;
+  width: 15px; height: 15px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  animation: rise 10s infinite ease-in;
+}
+.bubble1 { left: 10%; animation-duration: 12s; }
+.bubble2 { left: 30%; animation-duration: 15s; }
+.bubble3 { left: 50%; animation-duration: 10s; }
+.bubble4 { left: 70%; animation-duration: 16s; }
+.bubble5 { left: 90%; animation-duration: 13s; }
+
+@keyframes rise {
+  0% { bottom: -30px; transform: scale(0.5); opacity: 0.5; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { bottom: 100%; transform: scale(0.5); opacity: 0; }
+}
+
+/* Contador */
+#countdown {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #ff4500;
+  text-shadow: 1px 1px 3px #000;
+}
 </style>
 </head>
 <body>
-
-<!-- Fondo mar y arena -->
-<div class="background">
-  <div class="ocean"></div>
-  <div class="sand"></div>
-</div>
 
 <!-- Burbujas -->
 <div class="bubble bubble1"></div>
@@ -133,13 +128,18 @@ body, html {
 <div class="bubble bubble4"></div>
 <div class="bubble bubble5"></div>
 
-<!-- Personajes animados -->
-<img src="cangrejo.png" class="crab crab1">
-<img src="cangrejo.png" class="crab crab2">
-<img src="estrella.png" class="star star1">
-<img src="estrella.png" class="star star2">
-<img src="pez.png" class="fish fish1">
-<img src="pez.png" class="fish fish2">
+<!-- Red de pesca animada -->
+<div class="net"></div>
+
+<!-- Personajes -->
+<img src="cangrejo.png" class="character crab1" style="left:10%; bottom:15%;">
+<img src="cangrejo.png" class="character crab2" style="left:80%; bottom:20%;">
+<img src="estrella.png" class="character star1" style="left:25%; bottom:25%;">
+<img src="estrella.png" class="character star2" style="left:60%; bottom:30%;">
+<img src="medusa.png" class="character jelly1" style="left:40%; bottom:50%;">
+<img src="medusa.png" class="character jelly2" style="left:70%; bottom:60%;">
+<img src="pez.png" class="character fish1" style="left:15%; bottom:55%;">
+<img src="pez.png" class="character fish2" style="left:75%; bottom:45%;">
 
 <!-- Sección principal -->
 <section class="cinematic">
@@ -147,13 +147,13 @@ body, html {
   <p class="fade-in delay1">Bajo las olas, entre risas y secretos del mar...</p>
   <p class="fade-in delay2">se esconde la historia más divertida y hermosa.</p>
   
-  <h2 class="fade-in delay3">Baby Shower de [Nombre del bebé]</h2>
+  <h2 class="fade-in delay3">Revelación y Baby Shower de [Nombre del bebé]</h2>
   <p class="fade-in delay4">📅 1 de febrero de 2026 | 🕧 12:30 p.m.</p>
   <p class="fade-in delay5">📍 Salón Huiyatengo — Taxco de Alarcón, Guerrero</p>
-  
-  <p class="fade-in delay6">¡Ven a descubrir el tesoro que el mar ha guardado para nosotros!</p>
 
-  <div class="buttons fade-in delay7">
+  <div id="countdown"></div>
+
+  <div class="buttons fade-in delay6">
     <a href="https://wa.me/tu_numero?text=Confirmo%20asistencia%20al%20Baby%20Shower" target="_blank">Confirmar por WhatsApp</a>
     <a href="https://goo.gl/maps/tu_mapa" target="_blank">Ver Ubicación</a>
   </div>
@@ -165,29 +165,45 @@ body, html {
 </audio>
 
 <script>
-// Animación de cangrejos
-const crabs = document.querySelectorAll('.crab');
-crabs.forEach((crab) => {
-  let direction = 1;
+// Animación cangrejos y medusas
+const chars = document.querySelectorAll('.character');
+chars.forEach((char) => {
+  let directionX = Math.random() > 0.5 ? 1 : -1;
+  let directionY = Math.random() > 0.5 ? 1 : -1;
   setInterval(() => {
-    let current = parseFloat(getComputedStyle(crab).left);
-    if(current > 80) direction = -1;
-    if(current < 5) direction = 1;
-    crab.style.left = current + direction * 0.2 + '%';
+    let currentX = parseFloat(getComputedStyle(char).left);
+    let currentY = parseFloat(getComputedStyle(char).bottom);
+    if(currentX > 90) directionX = -1;
+    if(currentX < 0) directionX = 1;
+    if(currentY > 70) directionY = -1;
+    if(currentY < 10) directionY = 1;
+    char.style.left = currentX + directionX*0.2 + '%';
+    char.style.bottom = currentY + directionY*0.2 + '%';
   }, 50);
 });
 
-// Animación de peces
-const fish = document.querySelectorAll('.fish');
-fish.forEach((f) => {
-  let direction = 1;
-  setInterval(() => {
-    let current = parseFloat(getComputedStyle(f).left);
-    if(current > 90) direction = -1;
-    if(current < 10) direction = 1;
-    f.style.left = current + direction * 0.3 + '%';
-  }, 50);
-});
+// Contador regresivo
+const countdown = document.getElementById('countdown');
+const eventDate = new Date('February 1, 2026 12:30:00').getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  countdown.innerHTML = `Faltan ${days}d ${hours}h ${minutes}m ${seconds}s para la fiesta`;
+
+  if(distance < 0){
+    countdown.innerHTML = "¡La fiesta comenzó!";
+  }
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 
 </body>
