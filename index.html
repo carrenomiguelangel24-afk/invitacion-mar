@@ -2,118 +2,143 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Revelación de Género & Baby Shower</title>
+<title>Revelación & Baby Shower</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-margin:0;
 font-family:'Poppins',sans-serif;
-color:#033e5b;
-text-align:center;
 overflow-x:hidden;
-background:#001f3f;
+background:#000814;
+color:white;
 }
 
-/* Fondo animado tipo video */
-.video-bg{
+/* 🌊 FONDO MARINO PROFUNDO */
+.sea{
 position:fixed;
 inset:0;
-z-index:-3;
 background:
-radial-gradient(circle at 20% 30%,rgba(255,255,255,.15),transparent 40%),
-radial-gradient(circle at 80% 70%,rgba(255,255,255,.12),transparent 40%),
-linear-gradient(to bottom,#0a4da3,#7ec8e3);
-animation:moveBg 18s infinite alternate;
+radial-gradient(circle at top,rgba(0,180,255,.35),transparent 60%),
+linear-gradient(to bottom,#001f3f,#000814 70%);
+z-index:-10;
+animation:light 12s ease-in-out infinite alternate;
 }
-@keyframes moveBg{
+@keyframes light{
 from{filter:brightness(1)}
 to{filter:brightness(1.2)}
 }
 
-/* Burbujas */
+/* 🫧 BURBUJAS */
 .bubble{
 position:fixed;
 bottom:-100px;
-width:40px;
-height:40px;
-background:rgba(255,255,255,.25);
+width:25px;
+height:25px;
 border-radius:50%;
-animation:rise 12s infinite;
-z-index:-2;
+background:rgba(255,255,255,.25);
+animation:rise linear infinite;
 }
 @keyframes rise{
-from{transform:translateY(0);opacity:0}
-to{transform:translateY(-120vh);opacity:1}
+from{transform:translateY(0) scale(.7);opacity:0}
+to{transform:translateY(-120vh) scale(1.2);opacity:1}
 }
 
-/* Tarjeta */
+/* 🪼 MEDUSAS */
+.jelly{
+position:fixed;
+width:90px;
+opacity:.85;
+animation:jellyFloat 20s linear infinite;
+}
+@keyframes jellyFloat{
+from{transform:translateY(120vh)}
+to{transform:translateY(-160vh)}
+}
+
+/* 🐢 TORTUGA */
+.turtle{
+position:fixed;
+width:140px;
+top:40%;
+opacity:.9;
+animation:turtleSwim 30s linear infinite;
+}
+@keyframes turtleSwim{
+from{transform:translateX(-200px)}
+to{transform:translateX(120vw)}
+}
+
+/* 🎴 TARJETA */
 .card{
 max-width:420px;
-margin:40px auto;
-background:rgba(255,255,255,.95);
-border-radius:30px;
-padding:28px;
-box-shadow:0 25px 45px rgba(0,0,0,.35);
-animation:fadeUp 1.2s ease;
+margin:50px auto;
+background:rgba(255,255,255,.96);
+color:#033e5b;
+border-radius:34px;
+padding:30px;
+text-align:center;
+box-shadow:0 40px 80px rgba(0,0,0,.7);
+animation:appear 2s ease;
 }
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(40px)}
+@keyframes appear{
+from{opacity:0;transform:translateY(80px)}
 to{opacity:1;transform:translateY(0)}
 }
 
-h1{color:#0a4da3;margin-bottom:6px}
-.emoji{
-font-size:2.4rem;
-animation:float 3s ease-in-out infinite;
+h1{
+color:#0a4da3;
+font-size:1.9rem;
 }
-@keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-12px)}
+.subtitle{
+font-weight:500;
+margin-bottom:14px;
 }
 
-/* Cuenta regresiva */
+.magic{
+animation:magic 2.5s infinite alternate;
+}
+@keyframes magic{
+from{text-shadow:0 0 10px rgba(0,150,255,.6)}
+to{text-shadow:0 0 25px rgba(0,150,255,1)}
+}
+
+/* ⏳ CUENTA */
 .countdown{
 display:flex;
 justify-content:space-around;
 margin:22px 0;
 font-weight:700;
 }
-.time-box{
+.time{
 background:#e8f6ff;
 padding:14px;
-border-radius:16px;
+border-radius:18px;
 min-width:68px;
-box-shadow:0 0 15px rgba(0,150,255,.4);
-animation:pulse 2s infinite;
-}
-@keyframes pulse{
-0%{box-shadow:0 0 10px rgba(0,150,255,.4)}
-50%{box-shadow:0 0 20px rgba(0,150,255,.7)}
-100%{box-shadow:0 0 10px rgba(0,150,255,.4)}
+box-shadow:0 0 25px rgba(0,150,255,.8);
 }
 
-/* Botones */
+/* 🔘 BOTONES */
 .btn{
 display:block;
-margin:14px auto;
-padding:15px;
-border-radius:35px;
+margin:16px auto;
+padding:16px;
+border-radius:45px;
+color:white;
 text-decoration:none;
 font-weight:600;
-color:#fff;
+font-size:1.05rem;
 transition:.3s;
 }
-.btn:hover{transform:scale(1.08)}
+.btn:hover{transform:scale(1.12)}
 .maps{background:#1e88e5}
 .wa{background:#25d366}
 
 footer{
 font-size:.85rem;
-opacity:.8;
+opacity:.85;
 margin-top:14px;
 }
 </style>
@@ -121,22 +146,33 @@ margin-top:14px;
 
 <body>
 
-<div class="video-bg"></div>
+<div class="sea"></div>
 
-<!-- burbujas -->
-<div class="bubble" style="left:10%;animation-delay:0s"></div>
-<div class="bubble" style="left:40%;animation-delay:3s"></div>
-<div class="bubble" style="left:70%;animation-delay:6s"></div>
+<!-- BURBUJAS -->
+<script>
+for(let i=0;i<18;i++){
+let b=document.createElement("div");
+b.className="bubble";
+b.style.left=Math.random()*100+"%";
+b.style.animationDuration=(8+Math.random()*10)+"s";
+document.body.appendChild(b);
+}
+</script>
+
+<!-- MEDUSAS -->
+<img class="jelly" src="https://i.imgur.com/5cX1RjO.png" style="left:5%">
+<img class="jelly" src="https://i.imgur.com/5cX1RjO.png" style="left:80%;animation-delay:6s">
+
+<!-- TORTUGA -->
+<img class="turtle" src="https://i.imgur.com/1Jm8ZkF.png">
 
 <audio autoplay loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c7b62ef7a.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c7b62ef7a.mp3">
 </audio>
 
 <div class="card">
-<div class="emoji">🌊🐢🪼</div>
-
-<h1>¡Estás invitado!</h1>
-<p><strong>Revelación de Género & Baby Shower</strong></p>
+<h1 class="magic">¡Estás invitado!</h1>
+<p class="subtitle"><strong>Revelación de Género & Baby Shower</strong></p>
 
 <p>
 📅 <strong>1 de febrero de 2026</strong><br>
@@ -145,38 +181,38 @@ margin-top:14px;
 Taxco de Alarcón, Guerrero
 </p>
 
-<p>
-Ven a descubrir si llega una<br>
-<strong>sirenita</strong> 🧜‍♀️ o un <strong>marinerito</strong> ⚓
+<p class="magic">
+¿Será una <strong>sirenita</strong> 🧜‍♀️<br>
+o un <strong>marinerito</strong> ⚓?
 </p>
 
 <div class="countdown">
-<div class="time-box"><span id="d"></span><br>Días</div>
-<div class="time-box"><span id="h"></span><br>Horas</div>
-<div class="time-box"><span id="m"></span><br>Min</div>
-<div class="time-box"><span id="s"></span><br>Seg</div>
+<div class="time"><span id="d"></span><br>Días</div>
+<div class="time"><span id="h"></span><br>Horas</div>
+<div class="time"><span id="m"></span><br>Min</div>
+<div class="time"><span id="s"></span><br>Seg</div>
 </div>
 
 <a class="btn maps" href="https://www.google.com/maps/search/Salon+de+Eventos+Huiyatengo+Taxco+de+Alarcon+Guerrero" target="_blank">
 📍 Ver ubicación
 </a>
 
-<a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia%20al%20Baby%20Shower" target="_blank">
-💬 Confirmar por WhatsApp
+<a class="btn wa" href="https://wa.me/521XXXXXXXXXX?text=Confirmo%20mi%20asistencia" target="_blank">
+💬 Confirmar asistencia
 </a>
 
 <footer>Con cariño 💙🌊</footer>
 </div>
 
 <script>
-const eventDate = new Date("2026-02-01T12:30:00").getTime();
+const eventDate=new Date("2026-02-01T12:30:00").getTime();
 setInterval(()=>{
 const now=new Date().getTime();
-const diff=eventDate-now;
-document.getElementById("d").innerHTML=Math.floor(diff/(1000*60*60*24));
-document.getElementById("h").innerHTML=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-document.getElementById("m").innerHTML=Math.floor((diff%(1000*60*60))/(1000*60));
-document.getElementById("s").innerHTML=Math.floor((diff%(1000*60))/1000);
+const d=eventDate-now;
+document.getElementById("d").innerHTML=Math.floor(d/(1000*60*60*24));
+document.getElementById("h").innerHTML=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+document.getElementById("m").innerHTML=Math.floor((d%(1000*60*60))/(1000*60));
+document.getElementById("s").innerHTML=Math.floor((d%(1000*60))/1000);
 },1000);
 </script>
 
