@@ -3,161 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación Baby Shower Mar</title>
+<title>Un Tesoro Está por Llegar</title>
+
 <style>
-/* Reset básico */
+/* === Estilos base === */
 body, html {
   margin: 0;
   padding: 0;
   font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: #f4e2b1; /* Color arena */
   overflow-x: hidden;
-  background: #f4e2b1; /* Fondo color arena */
-  color: #fff;
-}
-
-/* Sección principal */
-.cinematic {
+  color: #000;
   text-align: center;
-  padding: 50px 20px;
-  position: relative;
-  z-index: 2;
 }
 
-/* Animaciones de texto */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-}
-.delay1 { animation-delay: 1s; }
-.delay2 { animation-delay: 2s; }
-.delay3 { animation-delay: 3s; }
-.delay4 { animation-delay: 4s; }
-.delay5 { animation-delay: 5s; }
-.delay6 { animation-delay: 6s; }
-.delay7 { animation-delay: 7s; }
-
-@keyframes fadeIn {
-  to { opacity: 1; }
+/* === Fondo marino animado === */
+#sea {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #00aaff 30%, #0077cc 70%, #005599 100%);
+  z-index: -3;
+  overflow: hidden;
 }
 
-/* Botones */
-.buttons {
-  margin-top: 20px;
-}
-.buttons a {
-  text-decoration: none;
-  color: #fff;
-  background: #ff69b4;
-  padding: 12px 25px;
-  margin: 10px;
-  border-radius: 30px;
-  display: inline-block;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-.buttons a:hover {
-  background: #ff1493;
-  transform: translateY(-5px);
-}
-
-/* Personajes animados */
-.character {
-  position: absolute;
-  width: 60px;
-  animation: float 4s infinite alternate ease-in-out;
-  z-index: 1;
-}
-@keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-20px); }
-}
-
-/* Redes y medusas */
-.net {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: url('red.png') no-repeat center center;
-  background-size: contain;
-  top: 10%;
-  left: 10%;
-  animation: netMove 6s infinite alternate ease-in-out;
-}
-@keyframes netMove {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(15deg); }
-}
-
-/* Burbujas animadas */
+/* === Burbujas === */
 .bubble {
   position: absolute;
-  bottom: -30px;
-  width: 15px; height: 15px;
+  bottom: -50px;
+  width: 12px; height: 12px;
   background: rgba(255,255,255,0.7);
   border-radius: 50%;
   animation: rise 10s infinite ease-in;
 }
-.bubble1 { left: 10%; animation-duration: 12s; }
-.bubble2 { left: 30%; animation-duration: 15s; }
-.bubble3 { left: 50%; animation-duration: 10s; }
-.bubble4 { left: 70%; animation-duration: 16s; }
-.bubble5 { left: 90%; animation-duration: 13s; }
-
 @keyframes rise {
-  0% { bottom: -30px; transform: scale(0.5); opacity: 0.5; }
-  50% { transform: scale(1); opacity: 1; }
-  100% { bottom: 100%; transform: scale(0.5); opacity: 0; }
+  0% { bottom: -50px; opacity: 0.5; transform: scale(0.6); }
+  50% { opacity: 1; }
+  100% { bottom: 110%; opacity: 0; transform: scale(1); }
 }
 
-/* Contador */
-#countdown {
-  font-size: 24px;
+/* === Red de pesca === */
+#net {
+  position: absolute;
+  top: 5%;
+  left: -20%;
+  width: 250px;
+  height: 250px;
+  background-image: url('red.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: swing 5s infinite ease-in-out;
+  z-index: -1;
+}
+@keyframes swing {
+  0% { transform: rotate(-10deg) translateX(-5%); }
+  50% { transform: rotate(10deg) translateX(5%); }
+  100% { transform: rotate(-10deg) translateX(-5%); }
+}
+
+/* === Personajes animados === */
+.character {
+  position: absolute;
+  width: 70px;
+  animation: float 4s infinite alternate ease-in-out;
+}
+@keyframes float {
+  to { transform: translateY(-20px); }
+}
+
+/* === Texto principal === */
+h1, h2, p {
+  margin: 10px auto;
+  max-width: 90%;
+  color: #fff;
+  text-shadow: 2px 2px 5px #000;
+}
+
+h1 { font-size: 2.4em; }
+h2 { font-size: 1.8em; }
+p  { font-size: 1.2em; }
+
+/* === Botones === */
+.button {
+  display: inline-block;
+  margin: 15px;
+  padding: 12px 25px;
+  background: #ff69b4;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
   font-weight: bold;
-  margin-top: 20px;
-  color: #ff4500;
-  text-shadow: 1px 1px 3px #000;
+  transition: 0.3s;
+}
+.button:hover {
+  transform: translateY(-4px);
+  background: #ff1493;
+}
+
+/* === Contador === */
+#countdown {
+  font-size: 1.6em;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #ffff66;
+  text-shadow: 2px 2px 4px #000;
 }
 </style>
 </head>
+
 <body>
 
+<!-- Fondo mar -->
+<div id="sea"></div>
+
 <!-- Burbujas -->
-<div class="bubble bubble1"></div>
-<div class="bubble bubble2"></div>
-<div class="bubble bubble3"></div>
-<div class="bubble bubble4"></div>
-<div class="bubble bubble5"></div>
+<div class="bubble" style="left:10%; animation-duration:12s;"></div>
+<div class="bubble" style="left:30%; animation-duration:15s;"></div>
+<div class="bubble" style="left:50%; animation-duration:11s;"></div>
+<div class="bubble" style="left:70%; animation-duration:14s;"></div>
+<div class="bubble" style="left:90%; animation-duration:13s;"></div>
 
-<!-- Red de pesca animada -->
-<div class="net"></div>
+<!-- Red móvil -->
+<div id="net"></div>
 
-<!-- Personajes -->
-<img src="cangrejo.png" class="character crab1" style="left:10%; bottom:15%;">
-<img src="cangrejo.png" class="character crab2" style="left:80%; bottom:20%;">
-<img src="estrella.png" class="character star1" style="left:25%; bottom:25%;">
-<img src="estrella.png" class="character star2" style="left:60%; bottom:30%;">
-<img src="medusa.png" class="character jelly1" style="left:40%; bottom:50%;">
-<img src="medusa.png" class="character jelly2" style="left:70%; bottom:60%;">
-<img src="pez.png" class="character fish1" style="left:15%; bottom:55%;">
-<img src="pez.png" class="character fish2" style="left:75%; bottom:45%;">
+<!-- Personajes (imagenes que debes subir igual que el HTML) -->
+<img src="cangrejo.png" class="character" style="left:15%; bottom:15%;">
+<img src="cangrejo.png" class="character" style="left:80%; bottom:20%;">
+<img src="medusa.png" class="character" style="left:25%; bottom:50%; animation-duration:5s;">
+<img src="medusa.png" class="character" style="left:75%; bottom:55%; animation-duration:4s;">
+<img src="pez.png" class="character" style="left:10%; bottom:65%; animation-duration:3.5s;">
+<img src="pez.png" class="character" style="left:85%; bottom:60%; animation-duration:4.2s;">
+<img src="estrella.png" class="character" style="left:40%; bottom:30%; animation-duration:4.8s;">
 
-<!-- Sección principal -->
-<section class="cinematic">
-  <h1 class="fade-in">🎬 ¡Un Tesoro Está por Llegar! 🎬</h1>
-  <p class="fade-in delay1">Bajo las olas, entre risas y secretos del mar...</p>
-  <p class="fade-in delay2">se esconde la historia más divertida y hermosa.</p>
-  
-  <h2 class="fade-in delay3">Revelación y Baby Shower de [Nombre del bebé]</h2>
-  <p class="fade-in delay4">📅 1 de febrero de 2026 | 🕧 12:30 p.m.</p>
-  <p class="fade-in delay5">📍 Salón Huiyatengo — Taxco de Alarcón, Guerrero</p>
+<!-- Texto principal -->
+<h1>🌊 Un Tesoro Está por Llegar 🎬</h1>
 
-  <div id="countdown"></div>
+<p>Hay secretos que el mar guarda…</p>
+<p>El tesoro más importante está en camino…</p>
+<p>Su nombre, su risa y su historia aún se escriben entre las olas</p>
 
-  <div class="buttons fade-in delay6">
-    <a href="https://wa.me/tu_numero?text=Confirmo%20asistencia%20al%20Baby%20Shower" target="_blank">Confirmar por WhatsApp</a>
-    <a href="https://goo.gl/maps/tu_mapa" target="_blank">Ver Ubicación</a>
-  </div>
-</section>
+<h2>🎀 Revelación & Baby Shower 🎀</h2>
+<p>📅 1 de febrero de 2026 | 🕧 12:30 p.m.</p>
+<p>📍 Salón Huiyatengo — Taxco de Alarcón, Guerrero</p>
+
+<!-- Contador regresivo -->
+<div id="countdown"></div>
+
+<!-- Botones -->
+<a href="https://wa.me/tu_numero?text=Confirmo%20asistencia%20al%20Baby%20Shower" class="button" target="_blank">✅ Confirmar</a>
+<a href="https://goo.gl/maps/tu_mapa" class="button" target="_blank">📍 Ver ubicación</a>
 
 <!-- Música de fondo -->
 <audio autoplay loop>
@@ -165,41 +160,26 @@ body, html {
 </audio>
 
 <script>
-// Animación cangrejos y medusas
-const chars = document.querySelectorAll('.character');
-chars.forEach((char) => {
-  let directionX = Math.random() > 0.5 ? 1 : -1;
-  let directionY = Math.random() > 0.5 ? 1 : -1;
-  setInterval(() => {
-    let currentX = parseFloat(getComputedStyle(char).left);
-    let currentY = parseFloat(getComputedStyle(char).bottom);
-    if(currentX > 90) directionX = -1;
-    if(currentX < 0) directionX = 1;
-    if(currentY > 70) directionY = -1;
-    if(currentY < 10) directionY = 1;
-    char.style.left = currentX + directionX*0.2 + '%';
-    char.style.bottom = currentY + directionY*0.2 + '%';
-  }, 50);
-});
-
-// Contador regresivo
-const countdown = document.getElementById('countdown');
-const eventDate = new Date('February 1, 2026 12:30:00').getTime();
+// ===== Cuenta regresiva al 1 feb 2026 12:30 =====
+const countdownDisplay = document.getElementById('countdown');
+const targetDate = new Date('February 1, 2026 12:30:00').getTime();
 
 function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = eventDate - now;
+  let now = new Date().getTime();
+  let diff = targetDate - now;
 
-  const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-  countdown.innerHTML = `Faltan ${days}d ${hours}h ${minutes}m ${seconds}s para la fiesta`;
-
-  if(distance < 0){
-    countdown.innerHTML = "¡La fiesta comenzó!";
+  if (diff < 0) {
+    countdownDisplay.innerText = "🎉 ¡La fiesta comenzó! 🎉";
+    return;
   }
+
+  let days = Math.floor(diff / (1000*60*60*24));
+  let hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  let mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+  let secs = Math.floor((diff % (1000*60)) / 1000);
+  
+  countdownDisplay.innerText = 
+    `Faltan ${days}d ${hours}h ${mins}m ${secs}s 🎈`;
 }
 
 setInterval(updateCountdown, 1000);
