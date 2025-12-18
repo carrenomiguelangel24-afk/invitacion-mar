@@ -9,7 +9,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* letra divertida y redondeada */
   background-color: #f4e2b1; /* color arena */
   color: #333;
   text-align: center;
@@ -27,30 +27,33 @@ body {
   background-color: #fff8e1;
   border-radius: 20px;
   box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 /* === Títulos y texto === */
 h1 {
   font-size: 2em;
   color: #ff4500;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px #aaa;
 }
-
 p {
   font-size: 1.1em;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
-/* === Contador destacado === */
+/* === Contador tipo reloj digital === */
 #countdown {
   font-size: 2em;
   font-weight: bold;
-  color: #ff1493;
+  color: #00aaff;
   margin: 20px 0;
-  padding: 10px;
+  padding: 15px;
   background-color: #ffe4e1;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Courier New', monospace; /* estilo reloj digital */
+  letter-spacing: 2px;
 }
 
 /* === Botones simples === */
@@ -65,30 +68,46 @@ p {
   font-weight: bold;
   transition: 0.3s;
 }
-
 .button:hover {
   background-color: #ff1493;
+}
+
+/* === Dibujos marinos decorativos === */
+.decor {
+  position: absolute;
+  width: 50px;
+  opacity: 0.8;
+  animation: float 6s infinite alternate ease-in-out;
+}
+@keyframes float {
+  to { transform: translateY(-15px); }
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>🎀 ¡Revelación & Baby Shower! 🎀</h1>
+  <h1>🌊 ¡Revelación & Baby Shower! 🎀</h1>
   <p>Estamos emocionados de celebrar juntos la llegada de nuestro pequeño tesoro.</p>
   <p>📅 1 de febrero de 2026 | 🕧 12:30 p.m.</p>
   <p>📍 Salón Huiyatengo — Taxco de Alarcón, Guerrero</p>
 
-  <!-- Contador -->
-  <div id="countdown">Cargando contador...</div>
+  <!-- Contador tipo reloj -->
+  <div id="countdown">Cargando...</div>
 
   <!-- Botones -->
   <a href="https://wa.me/tu_numero?text=Confirmo%20asistencia%20al%20Baby%20Shower" class="button" target="_blank">✅ Confirmar</a>
   <a href="https://goo.gl/maps/tu_mapa" class="button" target="_blank">📍 Ver ubicación</a>
+
+  <!-- Dibujos marinos -->
+  <img src="tortuga.png" class="decor" style="left:10%; bottom:10%;">
+  <img src="medusa.png" class="decor" style="left:80%; bottom:20%; animation-duration:5s;">
+  <img src="estrella.png" class="decor" style="left:30%; bottom:30%; animation-duration:4s;">
+  <img src="caracol.png" class="decor" style="left:70%; bottom:15%; animation-duration:6s;">
 </div>
 
 <script>
-// ===== Contador regresivo =====
+// ===== Contador regresivo tipo reloj digital =====
 const countdownDisplay = document.getElementById('countdown');
 const targetDate = new Date('February 1, 2026 12:30:00').getTime();
 
@@ -101,12 +120,12 @@ function updateCountdown() {
     return;
   }
 
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-  const seconds = Math.floor((diff % (1000*60)) / 1000);
+  const days = String(Math.floor(diff / (1000*60*60*24))).padStart(2,'0');
+  const hours = String(Math.floor((diff % (1000*60*60*24)) / (1000*60*60))).padStart(2,'0');
+  const minutes = String(Math.floor((diff % (1000*60*60)) / (1000*60))).padStart(2,'0');
+  const seconds = String(Math.floor((diff % (1000*60)) / 1000)).padStart(2,'0');
 
-  countdownDisplay.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s para la fiesta`;
+  countdownDisplay.innerText = `${days} : ${hours} : ${minutes} : ${seconds}`;
 }
 
 setInterval(updateCountdown, 1000);
