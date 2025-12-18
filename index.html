@@ -16,20 +16,25 @@
   --oro:#e6c27a;
 }
 
+/* Reset básico */
 *{box-sizing:border-box;}
 body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background:#00aaff;}
 
-/* RED MARINA */
+/* ========================== */
+/* RED MARINA SVG */
 .net {
   position:absolute;
   top:0;
   width:100%;
-  height:150px;
-  background: url('https://i.imgur.com/Kj4rFcz.png') no-repeat top center;
-  background-size: cover;
+  height:120px;
   z-index:4;
 }
+.net svg {
+  width:100%;
+  height:100%;
+}
 
+/* ========================== */
 /* INTRO ANIMADA CON OLAS */
 .intro{
   position:fixed;
@@ -70,13 +75,11 @@ body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background
   border-radius:50%;
   animation:waveMoveIntro 6s linear infinite;
 }
-
 .intro .waves.back{
   bottom:30px;
   opacity:0.15;
   animation-duration:10s;
 }
-
 @keyframes waveMoveIntro{
   to{transform:translateX(-50%);}
 }
@@ -84,12 +87,12 @@ body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background
 .intro.fadeOut{
   animation:fadeOut 2s forwards;
 }
-
 @keyframes fadeOut{
   0%{opacity:1;}
   100%{opacity:0; visibility:hidden;}
 }
 
+/* ========================== */
 /* ESCENA PRINCIPAL */
 .scene{
   position:relative;
@@ -101,7 +104,7 @@ body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background
   overflow:hidden;
 }
 
-/* OLAS PRINCIPALES */
+/* OLAS */
 .wave{
   position:absolute;
   bottom:-80px;
@@ -117,7 +120,6 @@ body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background
   opacity:.25;
   animation-duration:26s;
 }
-
 @keyframes waveMove{
   to{transform:translateX(-50%);}
 }
@@ -135,41 +137,6 @@ body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background
   100%{transform:translateY(-50px) scale(1);}
 }
 
-/* ANIMALES MARINOS */
-.character{
-  position:absolute;
-  filter:drop-shadow(0 8px 15px rgba(0,0,0,.25));
-  animation:floatAnim linear infinite;
-}
-
-@keyframes floatAnim{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
-  100%{transform:translateY(0);}
-}
-
-.turtle{width:90px;}
-.fish{width:90px;}
-.jellyfish{width:80px;}
-.crab{width:70px;}
-.starfish{width:60px;}
-.seahorse{width:70px;}
-.octopus{width:80px;}
-
-/* BRILLITOS DORADOS */
-.sparkle{
-  position:absolute;
-  width:8px;
-  height:8px;
-  background:gold;
-  border-radius:50%;
-  animation:twinkle 2s infinite;
-}
-@keyframes twinkle{
-  0%,100%{opacity:0;}
-  50%{opacity:1; transform:translateY(-10px);}
-}
-
 /* TARJETA PRINCIPAL */
 .card{
   max-width:460px;
@@ -184,7 +151,6 @@ body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background
   animation:cardUp 2s forwards;
   font-family:'Fredoka One', cursive;
 }
-
 @keyframes cardUp{
   to{opacity:1; transform:translateY(0);}
 }
@@ -196,7 +162,6 @@ body{margin:0; font-family:'Comic Neue', sans-serif; overflow:hidden; background
   margin-bottom:12px;
   text-align:center;
 }
-
 h1{
   font-size:36px;
   background:linear-gradient(90deg,var(--mar),var(--coral),var(--oro));
@@ -207,14 +172,17 @@ h1{
   background-size:200% auto;
   text-align:center;
 }
-
+@keyframes shine{
+  0%{background-position:0%;}
+  50%{background-position:100%;}
+  100%{background-position:0%;}
+}
 .phrase{
   color:#555;
   font-size:18px;
   margin-bottom:16px;
   text-align:center;
 }
-
 .date{
   background:#fff;
   border-radius:24px;
@@ -226,7 +194,6 @@ h1{
   font-family:'Fredoka One', cursive;
   font-size:20px;
 }
-
 /* CONTADOR */
 .counter{
   display:flex;
@@ -251,7 +218,6 @@ h1{
 .box strong.change{
   transform: scale(1.4);
 }
-
 /* BOTONES */
 .actions{
   display:flex;
@@ -271,12 +237,28 @@ h1{
 .actions a:active{transform:scale(.96);}
 .map{background:linear-gradient(145deg,#e8c27a,#c89c47);}
 .whatsapp{background:linear-gradient(145deg,#5bd48c,#3ba96c);}
+
+/* ANIMALES MARINOS CON SVG */
+.animal{
+  position:absolute;
+  width:60px;
+  animation:floatAnim 6s ease-in-out infinite;
+}
+@keyframes floatAnim{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+}
 </style>
 </head>
 <body>
 
-<!-- RED MARINA ARRIBA -->
-<div class="net"></div>
+<!-- RED MARINA SVG -->
+<div class="net">
+<svg viewBox="0 0 800 120" preserveAspectRatio="none">
+  <path d="M0,0 Q100,60 200,0 T400,0 T600,0 T800,0" stroke="goldenrod" stroke-width="4" fill="none"/>
+  <path d="M0,20 Q100,80 200,20 T400,20 T600,20 T800,20" stroke="goldenrod" stroke-width="2" fill="none"/>
+</svg>
+</div>
 
 <!-- INTRO -->
 <div class="intro" id="intro">
@@ -293,14 +275,16 @@ h1{
   <!-- BURBUJAS -->
   <div id="bubbles"></div>
 
-  <!-- ANIMALES MARINOS -->
-  <img class="character turtle" src="https://i.imgur.com/9YqQX4N.png">
-  <img class="character fish" src="https://i.imgur.com/0XKzn7K.png">
-  <img class="character jellyfish" src="https://i.imgur.com/IOeDq0F.png">
-  <img class="character crab" src="https://i.imgur.com/ZkHf6u7.png">
-  <img class="character starfish" src="https://i.imgur.com/Wf8tOZy.png">
-  <img class="character seahorse" src="https://i.imgur.com/j8aF6zN.png">
-  <img class="character octopus" src="https://i.imgur.com/9uU1CZm.png">
+  <!-- ANIMALES MARINOS SVG -->
+  <svg class="animal" style="left:10%; top:50%;">
+    <circle cx="30" cy="30" r="30" fill="#f7c27a"/> <!-- Cangrejo -->
+  </svg>
+  <svg class="animal" style="left:60%; top:20%;">
+    <circle cx="30" cy="30" r="30" fill="#ff8aa1"/> <!-- Estrella de mar -->
+  </svg>
+  <svg class="animal" style="left:40%; top:70%;">
+    <circle cx="30" cy="30" r="30" fill="#0e5f6a"/> <!-- Caballito de mar -->
+  </svg>
 
   <!-- TARJETA -->
   <div class="card">
@@ -391,6 +375,5 @@ setTimeout(()=>{
   }
 },4000);
 </script>
-
 </body>
 </html>
